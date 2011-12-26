@@ -1,0 +1,547 @@
+{{Serial infobox
+ |      tytuł_serialu= Liga Sprawiedliwych
+ |              image= 
+ |   oryginalny_tytuł= Justice League
+ |    gatunek_serialu= [[film animowany|serial animowany]]
+ |     kraj_produkcji= {{państwo|USA}}
+ |       czas_trwania= 21 minut
+ |      data_premiery= {{flaga|POL}} [[30 września]] [[2002]]
+ |        lata_emisji= 2001-2004
+ |     ilość_odcinków= [[#Spis odcinków|52]]
+ |      ilość_sezonów= 2 sezony
+ |          reżyseria= 
+ |         scenariusz= 
+ |               role= 
+ |             muzyka= 
+ |            zdjęcia= 
+ |        scenografia= 
+ |          produkcja= 
+ |   sieć_telewizyjna= [[Cartoon Network]]
+ |              język= 
+ |            nagrody= 
+ |         filmweb_id= 95051
+ |            imdb_id= 0275137
+ |     lista_odcinków= [[#Spis odcinków|Spis odcinków]]
+}}
+'''''Liga Sprawiedliwych''''' ([[język angielski|ang.]] ''Justice League'', [[2001]]-[[2004]]) – [[serial telewizyjny|serial]] [[film animowany|animowany]] produkcji [[Stany Zjednoczone|amerykańskiej]], nadawany przez kanał telewizyjny [[Cartoon Network]] w bloku [[Toonami]].
+
+Serial opowiada o losach grupy 7 superbohaterów, którzy postanowili działać razem jako ''Liga Sprawiedliwych''.
+
+== Bohaterowie ==
+* [[Superman]] / Clark Kent / Kal-El
+* [[Batman]] / Bruce Wayne
+* Flash / Wally West
+* Zielona Latarnia / John Stewart (ang. ''Green Lantern'')
+* Wonder Woman / Księżniczka Diana z Temiskiry / Amazonka
+* Marsjanin Łowca / J’onn J’onzz (ang. ''Martian Manhunter'')
+* Sokolica / Shayera Hol (ang. ''Hawkgirl'')
+
+== Wersja polska ==
+'''Wersja polska''': [[Master Film|MASTER FILM]] na zlecenie [[Warner Bros.|WARNER BROS.]]<br>
+'''Reżyseria''': [[Małgorzata Boratyńska]]<br>
+'''Dialogi''': [[Elżbieta Kowalska (dialogistka)|Elżbieta Kowalska]]<br>
+'''Dźwięk''':
+* [[Urszula Ziarkiewicz]],
+* [[Renata Gontarz]]
+'''Montaż''':
+* [[Agnieszka Kołodziejczyk]],
+* [[Michał Przybył]]
+'''Kierownictwo produkcji''':
+* [[Agnieszka Kołodziejczyk]],
+* [[Agnieszka Wiśniowska]]
+'''Wystąpili''':
+* [[Jacek Rozenek]] – '''Superman'''
+* [[Radosław Pazura]] – '''Batman'''
+* [[Marcin Przybylski]] – '''Flash'''
+* [[Ewa Serwa]] – '''Sokolica''' 
+* [[Agnieszka Fajlhauer]] – '''Wonder Woman'''
+* [[Mirosław Zbrojewicz]] – '''Zielona Latarnia'''
+* [[Andrzej Chudy]] – '''J’onn J’onzz''' (Marsjanin)
+* [[Jarosław Domin]] – '''Joker'''
+* [[Marcin Troński]] – '''Lex Luthor'''
+* [[Adam Bauman]] –
+** '''Aquaman'''
+** '''Wandal Dzikos'''
+* [[Mariusz Leszczyński (aktor)|Mariusz Leszczyński]] – '''Cień'''
+* [[Dominika Kluźniak]]
+* [[Monika Pikuła]]
+* [[Agnieszka Maliszewska]]
+* [[Tomasz Gęsikowski]]
+* [[Janusz Wituch]]
+* [[Wojciech Solarz]]
+* [[Przemysław Nikiel]]
+* [[Dariusz Odija]]
+* [[Andrzej Tomecki]]
+* [[Zbigniew Konopka]]
+* [[Andrzej Gawroński (aktor)|Andrzej Gawroński]]
+* [[Andrzej J. Dąbrowski]]
+* [[Tomasz Kozłowicz]]
+i inni
+
+== Odcinki ==
+* Serial składa się z dwóch serii po 26 odcinków (w sumie 52 odcinki).
+* Serial był emitowany w [[Cartoon Network]] w bloku [[Toonami]] od [[30 września]] [[2002]] roku (I seria – odcinki 1-26).
+* II seria (odcinki 27-52) pojawiła się [[6 września]] [[2004]] roku.
+* [[6 czerwca]] [[2006]] serial został zastąpiony przez serial ''„[[Batman przyszłości]]”''.
+* Odcinek ''„U źródeł tajemnicy”'' jest często pokazywany jako jeden, godzinny film. W polskim CN był tak wyemitowany 2 razy w 2002 roku: 30 września (premiera serialu) oraz [[5 października]].
+* Dalsze losy Ligi są ukazane i kontynuowane w serialu ''„[[Liga Sprawiedliwych Bez Granic]]”''.
+Bohaterów ''„Ligi Sprawiedliwych”'' możemy oglądać również w serialu nie emitowanym w Polsce ''„Static Shock”'' w odcinkach:
+* 34. i 36. ''„A League Of Their Own”''
+* 43. ''„Fallen Hero”''
+
+=== Spis odcinków ===
+{| style="text-align: center; width: 75%; margin: 0 auto; border-collapse: collapse;" border="1" cellpadding="1" cellspacing="1"
+|-style="background: #ABC;"
+!width="14%"|Premiera odcinka
+!width="6%"|N/o
+!width="40%"|Polski tytuł
+!width="40%"|Angielski tytuł
+|-
+| colspan=4|
+|-
+| colspan=4 bgcolor="#DFEFFF" | '''SERIA PIERWSZA'''
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 30.09.2002
+| bgcolor="#DFEEEF"|01
+| rowspan=3|''U źródeł tajemnicy''
+| rowspan=3|''Secret Origins''
+|-
+| bgcolor="#DFEFFF"| 30.09.2002
+| bgcolor="#DFEEEF"|02
+|-
+| bgcolor="#DFEFFF"| 30.09.2002
+| bgcolor="#DFEEEF"|03
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 01.10.2002
+| bgcolor="#DFEEEF"|04
+| rowspan=2|''W najczarniejszą noc''
+| rowspan=2|''In Blackest Night''
+|-
+| bgcolor="#DFEFFF"| 02.10.2002
+| bgcolor="#DFEEEF"|05
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 03.10.2002
+| bgcolor="#DFEEEF"|06
+| rowspan=2|''Podwodny wróg''
+| rowspan=2|''The Enemy Below''
+|-
+| bgcolor="#DFEFFF"| 04.10.2002
+| bgcolor="#DFEEEF"|07
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 07.10.2002
+| bgcolor="#DFEEEF"|08
+| rowspan=2|''Powszechna niesprawiedliwość''
+| rowspan=2|''Injustice For All''
+|-
+| bgcolor="#DFEFFF"| 08.10.2002
+| bgcolor="#DFEEEF"|09
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 09.10.2002
+| bgcolor="#DFEEEF"|10
+| rowspan=2|''Utracony Raj''
+| rowspan=2|''Paradise Lost''
+|-
+| bgcolor="#DFEFFF"| 10.10.2002
+| bgcolor="#DFEEEF"|11
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 11.10.2002
+| bgcolor="#DFEEEF"|12
+| rowspan=2|''Świat Wojny''
+| rowspan=2|''War World''
+|-
+| bgcolor="#DFEFFF"| 14.10.2002
+| bgcolor="#DFEEEF"|13
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 18.11.2002
+| bgcolor="#DFEEEF"|14
+| rowspan=2|''Odważni i bezwzględni''
+| rowspan=2|''The Brave And The Bold''
+|-
+| bgcolor="#DFEFFF"| 19.11.2002
+| bgcolor="#DFEEEF"|15
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 15.10.2002
+| bgcolor="#DFEEEF"|16
+| rowspan=2|''Furia''
+| rowspan=2|''Fury''
+|-
+| bgcolor="#DFEFFF"| 16.10.2002
+| bgcolor="#DFEEEF"|17
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 17.10.2002
+| bgcolor="#DFEEEF"|18
+| rowspan=2|''Legendy''
+| rowspan=2|''Legends''
+|-
+| bgcolor="#DFEFFF"| 18.10.2002
+| bgcolor="#DFEEEF"|19
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 21.10.2002
+| bgcolor="#DFEEEF"|20
+| rowspan=2|''Rycerz Cienia''
+| rowspan=2|''A Knight Of Shadows''
+|-
+| bgcolor="#DFEFFF"| 22.10.2002
+| bgcolor="#DFEEEF"|21
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 23.10.2002
+| bgcolor="#DFEEEF"|22
+| rowspan=2|''Metamorfoza''
+| rowspan=2|''Metamorphosis''
+|-
+| bgcolor="#DFEFFF"| 24.10.2002
+| bgcolor="#DFEEEF"|23
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 25.10.2002
+| bgcolor="#DFEEEF"|24
+| rowspan=3|''Czas Dzikosa''
+| rowspan=3|''The Savage Time''
+|-
+| bgcolor="#DFEFFF"| 28.10.2002
+| bgcolor="#DFEEEF"|25
+|-
+| bgcolor="#DFEFFF"| 29.10.2002
+| bgcolor="#DFEEEF"|26
+|-
+| colspan=4|
+|-
+| colspan=4 bgcolor="#DFEFFF" | '''SERIA DRUGA'''
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 06.09.2004
+| bgcolor="#DFEEEF"|27
+| rowspan=2|''Zmierzch''
+| rowspan=2|''Twilight''
+|-
+| bgcolor="#DFEFFF"| 07.09.2004
+| bgcolor="#DFEEEF"|28
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 08.09.2004
+| bgcolor="#DFEEEF"|29
+| rowspan=2|''Tabula Raza''
+| rowspan=2|''Tabula Rasa''
+|-
+| bgcolor="#DFEFFF"| 09.09.2004
+| bgcolor="#DFEEEF"|30
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 10.09.2004
+| bgcolor="#DFEEEF"|31
+| rowspan=2|''To tylko sen''
+| rowspan=2|''Only A Dream''
+|-
+| bgcolor="#DFEFFF"| 13.09.2004
+| bgcolor="#DFEEEF"|32
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 14.09.2004
+| bgcolor="#DFEEEF"|33
+| rowspan=2|''Honorowa Dziewczyna''
+| rowspan=2|''Maid Of Honor''
+|-
+| bgcolor="#DFEFFF"| 15.09.2004
+| bgcolor="#DFEEEF"|34
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 16.09.2004
+| bgcolor="#DFEEEF"|35
+| rowspan=2|''Serca i umysły''
+| rowspan=2|''Hearts And Minds''
+|-
+| bgcolor="#DFEFFF"| 17.09.2004
+| bgcolor="#DFEEEF"|36
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 20.09.2004
+| bgcolor="#DFEEEF"|37
+| rowspan=2|''Lepszy świat''
+| rowspan=2|''A Better World''
+|-
+| bgcolor="#DFEFFF"| 21.09.2004
+| bgcolor="#DFEEEF"|38
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 22.09.2004
+| bgcolor="#DFEEEF"|39
+| rowspan=2|''Zaćmienie''
+| rowspan=2|''Eclipsed''
+|-
+| bgcolor="#DFEFFF"| 23.09.2004
+| bgcolor="#DFEEEF"|40
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 24.09.2004
+| bgcolor="#DFEEEF"|41
+| rowspan=2|''Terror zza grobu''
+| rowspan=2|''Terror Beyond''
+|-
+| bgcolor="#DFEFFF"| 30.09.2004
+| bgcolor="#DFEEEF"|42
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 01.10.2004
+| bgcolor="#DFEEEF"|43
+| rowspan=2|''Tajne Stowarzyszenie''
+| rowspan=2|''Secret Society''
+|-
+| bgcolor="#DFEFFF"| 04.10.2004
+| bgcolor="#DFEEEF"|44
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 05.10.2004
+| bgcolor="#DFEEEF"|45
+| rowspan=2|''Później''
+| rowspan=2|''Hereafter''
+|-
+| bgcolor="#DFEFFF"| 06.10.2004
+| bgcolor="#DFEEEF"|46
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 15.10.2004
+| bgcolor="#DFEEEF"|47
+| ''Radość i pocieszenie''
+| ''Comfort And Joy''
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 18.10.2004
+| bgcolor="#DFEEEF"|48
+| rowspan=2|''As w rękawie''
+| rowspan=2|''Wild Cards''
+|-
+| bgcolor="#DFEFFF"| 19.10.2004
+| bgcolor="#DFEEEF"|49
+|-
+| colspan=4|
+|-
+| bgcolor="#DFEFFF"| 31.01.2005
+| bgcolor="#DFEEEF"|50
+| rowspan=3|''Niepisane w gwiazdach''
+| rowspan=3|''Starcrossed''
+|-
+| bgcolor="#DFEFFF"| 01.02.2005
+| bgcolor="#DFEEEF"|51
+|-
+| bgcolor="#DFEFFF"| 02.02.2005
+| bgcolor="#DFEEEF"|52
+|-
+| colspan=4|
+|}
+
+== Ciekawostki ==
+{{spoiler}}
+* W serialu pojawiają się postacie znane chociażby z serialu ''„[[Superman: The Animated Series|Superman TAS]]”'': Superman, Kyle Rayner, Lois Lane, Lex Luthor, Aquaman, Jonathan and Martha Kent, Brainiac, Desaad, Darkseid, Dr Fate, Lana Lang, Flash, Highfather, Inza, Kalibak, Livewire, [[Lobo]], Luminous, Mercy Graves, Metallo, Parasite, Sinestro, Sollis/Lightray, Supergirl, Steppenwolf, Orion, Mr. Miracle, Maggie Sawyer, Toyman, Volcana, Weather Wizard.
+* W serialu pojawiają się postacie znane chociażby z serialu ''„Batman TAS”'': Batman, Alfred Pennyworth, [[Joker]], Jason Blood/Etrigan the Demon, Clayface, Firefly, Harley Quinn, Poison Ivy, [[Two-Face]], Ventriloquist and Scarface.
+* Odcinek ''„Radość i pocieszenie”'' to jedyny jednoczęściowy odcinek serialu.
+* Wygląd Aquamana jest nieco inny niż w serialu ''„Superman TAS”''.
+* Z oryginalnych członków Ligi Sprawiedliwych, pojawiają się: Batman, Superman, Martian Manhunter i Wonder Woman.
+* Odcinek ''„U źródeł tajemnicy”'' zawiera odwołanie do opowieści o inwazji „Białych Marsjan” na Ziemię, tworzoną w serii Justice League przez Marka Waida i Granta Morrisona. Jest też nawiązaniem do tytuł cyklu komiksów (wydawanych oczywiście przez [[DC Comics|DC]]), opisujących początki działania różnych superbohaterów pod tym samym tytułem (''„Secret Origins”''). 
+* W odcinku ''„U źródeł tajemnicy”'' trójnogie pojazdy obcych najeźdźców to nawiązanie do maszyn, które opisał [[Herbert George Wells]] w ''„[[Wojna światów (książka)|Wojnie światów]]”''. 
+* Postać Johna Allen'a Carter'a z odcinka ''„U źródeł tajemnicy”'', jest delikatnym nawiązaniem do fikcyjnych przygód "John Carter, Warlord of Mars," autorstwa Edgar'a Rice'a Burroughs'a. 
+* Kośmiczni najeżdzcy z odcinka ''„U źródeł tajemnicy”'', są wrażliwy na światło słoczne. Dziwne więc że ich agent J. Allen Carter, potrafił przez dwa lata unikać światła słocznego, nie wzbudzając niczyjich podejrzeń. 
+* Dlaczego kosmiczni najeżdzcy, w ostatniej części''„U źródeł tajemnicy”'', uwięzili Hawkgirl razem z jej maczugą, zamist ją po prostu ukryć?
+* W pierwszej części odcinka ''„U źródeł tajemnicy”'' generał Wells w swej wypowiedzi w której stwierdza że nie można ufać Supermanowi, nawiązuje do odcinka ''„Legacy”'' z serialu ''„Superman TAS”''.
+* Odcinek ''„W najczarniejszą noc”'' zawiera aluzje do komiksowej historii ''„No Man Escapes the Manhunter”'' oraz komiksowej mini-serii ''„Cosmic Odyssey”''.
+* W pierwszej części odcinka ''„W najczarniejszą noc”'' kiedy Zielona Latarnia po cywilnemu przemierza ulice, jest nawiązaniem do filmu ''„Shaft”''.
+* Zielone Latarnie występujące w odcinku ''„W najczarniejszą noc”'', oprócz Johna Stewarta to: Gallius Zed, Larvox, Kilowog, Tomar Re i Arkkis Chummuck. 
+* Tytuł odcinka ''„Podwodny wróg”'', pochodzi z filmu z 1957 roku, opowiadającym o starciu niemieckiego U-boota z amerykańskim niszczycielem, w czasie II wojny światowej, o tym samym tytule.
+* Orm z odcinka ''„Podwodny wróg”'' to oczywiście komiksowy Ocean Master, jeden z największych wrogów Aquaman'a.
+* W pierwszej części odcinka ''„Podwodny wróg”'', zaraz po drugim ataku Deadshota na Aqamana(którym w rzeczywistości był J'onn) mozna dostrzec reportękę wyglądającą jak Summer Gleeson, z serialu ''„Batman TAS”''.
+* W drugiej części odcinka ''„Podwodny wróg”'' Aquaman traci rękę, chcąc się uwolnić z kajdan i uratować swego syna. W komiksie traci ją w walce z podmorskimi potworami, w czasie jednego że swych starć z Ocean Master'em.
+* Twórcy zdecydowali się owinąć syna Aquaman'a, w drugiej części odcinka ''„Podwodny wróg”'', w czerwony materiał, żeby ukryć ślady krwawienia, po użyciu jej póżniej, jako opatrunku przez Aquaman'a.
+* Odcinek ''„Powszechna niesprawiedliwość”'' zawiera aluzje do komiksowej historii ''„Rock of Ages”''.
+* Nazwa grupy Luthora z odcinka ''„Powszechna niesprawiedliwość”'' to Injustice Gang która jest używana przez twórców i fanów serialu, w odcinku nazwa ta nie pada ani razu.
+* Szkodliwość kryptonitu dla ludzi, została po raz pierwszy zaprezentowana w serialu ''„[[Superman: The Animated Series|Superman TAS]]”'' w odcinku ''„World's Finest”'', gdzie ujawniono że właściciel kryptonitowego smoka zmarł przedwcześnie. 
+* Z komiksowych członków "Injustice Gangu" z odcinka ''„Powszechna niesprawiedliwość”'', pojawiają się tylko Lex Luthor i Joker.
+* W odcinku ''„Powszechna niesprawiedliwość”'' w bazie Injustice Gangu można zobaczyć pomniki Jana i Zanyi, Cudownych Bliźniąt z serialu ''„Super Friends”''. 
+* W drugiej części odcinka ''„Powszechna niesprawiedliwość”'', Cheetach(Gepard) zostaje oskarżona o zdradę i wyciągnięta na egzekucje. Jest jednak potem widziana, w grupie aresztowanych przestępców i kolejnych odcinkach serialu. Swe ocalenie zawdzięcza błędowi w animacji, gdyż pierowtnie twórcy planowali ją uśmiercić, jednak przypadkiem znalazła się w jednej z ostatnich scen i ostatecznie zrezygnowano z tych planów.
+* W orginalnej wersji odcinka ''„Powszechna niesprawiedliwość”'' Luthor mówi do Ultra-Humanita:  "Et tu, Humanite?". W polskiej wersji, zostało to zmienione na "I ty Brutusie?", skąd oczywiście pochodził ten zwrot.
+* Ostatnie słowa Jokera:"You're dethspicable!"(po polsku jesteś podły), w odcinku ''„Powszechna niesprawiedliwość”'', są wypowiedzanie w stylu Kaczora Daffiego, znanego z serialu "Zwariowane Melodie". 
+* Tytuł odcinka ''„Utracony Raj”'' jest zaczerpnięty oczywiście z poematu [[John Milton|Johna Miltona]].
+* W odcinku ''„Utracony Raj”'', w pewnym momencie bransolety Wonder Woman zmieniają kolor z srebnego na złoty.
+* Huragan który nawiedza miasto, w odcinku ''„Utracony Raj”'' jest nazywany "Huraganem Gardnera". Jest to prawdopodobnie odniesienie do postaci Gardner'a Fox'a, który przez długi czas tworzył komiksy o Lidze Sprawiedliwych. 
+* Informacje o huraganie, w odcinku ''„Utracony Raj”'' podaje stacja "Bernie's News". Jest to prawdopodobne odniesienie do maxi-serii Watchmen, gdzie pojawiła się stacja o identycznej nazwie.   
+* Mała blond-włosa dziewczynka, którą ratuje Wonder Woman w odcinku ''„Utracony Raj”'', nosi imię Cassie. Możliwe wię że jest ona nawiązaniem do postaci Cassie Sandsmark, znanej lepiej jako Wonder Girl II. Także jej komentarz "Nie jesteś moją siostrą", może być delikatnym żartem z faktu, że Wonder Women nigdy nie była spokrewniona z żadną Wonder Girl.
+* Po pokonaniu Hadasa przez Ligę, w drugiej części odcinka ''„Utracony Raj”'' wśród spetryfikowanych amazonek, moża dostrzec statuę przedstawiającą J'onn J'onzz'a.
+* Pod sam koniec odcinka ''„Utracony Raj”'', widzimy jak Flasha zakłada odwrotnie swój złoty wieniec laurowy. Jednak w kolejnej scenie jest on już umieszczony jak należy.
+* Odcinek ''„Świat Wojny”'' jest częściowo oparty na komiksowej historii  "Gladiator" z Superman #28-32 z 1989 roku, wydanego pzez DC.
+* W odcinku ''„Świat Wojny”'' można znależć podobieństwa z filmem "Gladiator" w reżyserii Ridley'a Scott'a.
+* Tytuł odcinka ''„Odważni i bezwzględni”''("The Brave and the Bold"), jest odniesieniem do serii komiksowej DC, o tym samym tytule, w której pokazywano współprace dwóch różnych superbohaterów.
+* W odcinku ''„Odważni i bezwzględni”'', Grood przejmuje kontrolę nad dwoma naukowcami, aby ukradli izotopy z Research Center, potrzebne do uruchomienia jego maszyny. Ten pomysł wydaje sie bezsensowny, kiedy w dalszej części ocinka, okazuje sie ze maszyna znajdowała się właśnie w Research Center.
+* Broń używana przez gorylę w odcinku ''„Odważni i bezwzględni”'', wyglądaja podobnie jak Kryptoninska broń znana z serialu ''„[[Superman: The Animated Series|Superman TAS]]”'', konkretnie z odcinka ''„The Last Son of Krypton”''.
+* Pierwsze słowa Solovara w docinku ''„Odważni i bezwzględni”'' brzmią: "Get your stinking paws off me, you filthy human!"(Zabieraj ode mnie te cuchnące łapska, ty brudny człowieku). Jest to odniesienie do filmu "Planet of the Apes"(Planety Małp) i pierwszych słów głównego bohatera w świecie małp.
+* W pierwszej części odcinka ''„Odważni i bezwzględni”'', w czasie halucynacji Flasha, można znależć odniesienia do kilku historii komiksowych z Flash'em(Barry Allen'em) w roli głównej:
+** Kukiełkowy Flash - "Plight of the Puppet Flash" z Flash #133.
+** Flash przed lustrami, z których każdy pokazuje go inaczej - "The Master of Mirrors!" oraz "The Mirror Master's Invincible Bodyguards!" z Flash #105 oraz Flash #136.
+** Wielkogłowy Flash -  "Duel of the Super-heroes" oraz "Fun-House Mirror" z Flash #177, Green Lantern #13 oraz Justice League of America #7.
+* W pierwszej części odcinka ''„Odważni i bezwzględni”'', występuje blondwłosy policjant, którego wygląd jest udarzająco podobny do Barry'ego Allen'a, drugiego Flasha. 
+* W drugiej części odcinka ''„Odważni i bezwzględni”'', na mapie w Watchtower możemy zobaczyć że Central City znajduje się gdzieś w stanie Indiana.
+* W drugiej części odcinka ''„Odważni i bezwzględni”'', widzimy wyrażnie że Javelin został uszkodzony po uderzeniu w pole ochronne otaczające Central City. Kiedy jednak pojazd ląduje w okolicach Gorilla City, po uszkodzeniach nie ma śladu. 
+* W oryginalnej wersji serialu odcinek ''„Furia”'' miał być jednym z ostatnich odcinków sezonu tak jak to ma miejsce w polskiej wersji, ale został przesunięty do przodu.
+* Aresia z odcinka ''„Furia”'' jest wzorowana na postaciach Lyty Trevor-Hall i Heleny Kosmatos noszących pseudonim Fury, skad prawdopodobnie pochodzi tytuł odcinka. 
+* Niewiadomo skąd, Hippolyta bardzo szczegółowo zna historię Aresi w odcinku ''„Furia”'', a przecież kapitan statku zmarła znalazł chwilę po znalezieniu sie na wyspie, więc nie miał kto mu jej opowiedzieć.
+* Odcinek ''„Legendy”'' jest częściowo adaptacją komiksowych crossoverów DC, w których Justice League walczyła u boku Justice Society (stamtąd wzięto m.in. wyjaśnienie istnienia światów równoległych).
+* Robot Luthora z odcinka ''„Legendy”'', wygląda jak Prototype-03 z mangi i anime "Neon Genesis Evangelion".
+* Wypowiedż J'onn'a w odcinku ''„Legendy”'':"Wydaje mi się, że nie jescteśmy już w Metropolis", jest odniesieniem do filmu "The Wizard of Oz" (Czarnoksiężnik z krainy Oz).
+* Postać Raya Thompsona (o wyglądzie wzorowanym na postaci Brainwave’a) z odcinka ''„Legendy”'' to przewrotny hołd złożony Royowi Thomasowi, który tworzył dla DC komiksy o Justice League i All-Star Squadron, utrzymane w klimacie lat 50. 
+* Mnóstwo tesktów Raya Thompsona z odcinka ''„Legendy”'' przynosi na myśl komiksy z Batmanem z 1960. Justice Guild ma nawet specjalny czerwony telefon alarmowy, który pojawił się w starych historiach z Batmanem.
+* Siedziba Justice Guild z odcinka ''„Legendy”'', wygląda jak posiadłosć którą zakupił Joker w serialu ''„Batman TAS”'' w odcinku ''„Joker's Millions”''.
+* Nazwa grupy superbohaterów Justice Guild z odcinka ''„Legendy”'' przypomina inną komiksową drużynę że świata DC: Justice Society of America. Sami jej członkowie są wzorowani na postaciach z Justice Society:
+** The Streak(Chyży) na Flashu/Jayu Garricku
+** Tom Turbina wygląda jak Superman, ale jego charakter i moce bazują na postaci Atoma/Ala Pratta 
+** Green Guardsman(Zielony Gwardzista) na Green Lanternie/Alanie Scott’cie
+** Catman na Widcat’cie/Tedzie Grancie
+** Black Siren(Czarna Syrena) na Black Canary/Dinach Drake Lance
+* Grupa przestępców z odcinka ''„Legendy”'' nosi nazwę Injustice Guild, co jest aluzją do Injustice Society, grupy największych wrogów Justice Society of America. Sami członkowie grupy przypominają czlonkow Injustice Society:
+** Music Master – Fiddlera
+** Sportsman – Sportsmastera
+** Dr Blizzard – Icicle’a
+** Sir Swami – Wizarda
+* Druga część odcinka ''„Legendy”'' jest dedykowany Gardnerowi F. Foxowi, autorowi komiksów o Justice League. 
+* Odcinek ''„Rycerz Cienia”'' jest przepełniony legendami arturiańskimi.
+* Harv Hickman z odcinka ''„Rycerz Cienia”'' jest oczywistą parodią Hugh'a Hefner'a. 
+* W drugiej części odcinka ''„Rycerz Cienia”'' jeden z gości na balu kostiumowym ubrany w stylu Batmana, wykonuje ''„nietoperzy taniec”'', znany z fabularnego serialu o Batmanie z lat 60.
+* Kiedy Hickman zostaje przemieniony w robaka w odcinku ''„Rycerz Cienia”'', wygląda jak "The Eater" z Kamandi #18.
+* W drugiej części odcinka ''„Rycerz Cienia”'' Flash nazywa przemienionego w robaka Hickman'a "Cecil". Co jest odniesieniem do kreskówki z lat 60-70 "Beany and Cecil".
+* Odcinek ''„Metamorfoza”'' jest częściowo oparty na filmie fantastycznym "Forbidden Planet".
+* Scena w odcinku ''„Metamorfoza”'', kiedy Chemo wychodzi na szczyt budynku trzymając Sapphire, jest oczywistą parodią filmu "King Kong". 
+* Potwor który powstał z połączenia formuły i części umysłu Simona Stagga w odcinku ''„Metamorfoza”'' nosi imię Chemo. 
+* W trzyczęściowych odcinkach ''„Czas Dzikosa”'' armia Dzikosa wzorowana jest na nazistach, ale nie pokazana jest żadna swastyka, oraz nie ma słowa o innych członkach osi: Włochach i Japonii. I choć pojawia się [[Adolf Hitler]] ani razu nikt o nim nie mówi.
+* W pierwszej części odcinka ''„Czas Dzikosa”'' podczas sceny w kryjówce Batmana można zauważyć osoby wyglądające jak Dick Grayson (Nightwing), Barbara Gordon (Batgirl/Oracle) całujących się ze sobą, oraz Tima Drake’a (Robin) i Cassandre Cain (Batgirl III) przebiegających obok nich.
+* W trzeciej części odcinka ''„Czas Dzikosa”'' po zbombardowaniu fabryki Liga odkrywa, że Dzikos planuje użyć bombowców z napędem odrzutowym. Stwierdzają, że technologia jest zbyt rozwinięta. Ale Niemcy miały podczas II wojny światowej samolot odrzutowy, tyle że został wynaleziony zbyt późno i nie został w pełni wykorzystany podczas wojny.
+* W odcinku ''„Czas Dzikosa”'', pojawia się masa postaci z komiksów DC, osadzonych w realiach drugiej wojny światowej: Sergeant Rock i jego Easy Company, The Blackhawks oraz Steve Trevor.
+* Kryptonim inwazji Dzikosa na Amerykę, w odcinku ''„Czas Dzikosa”'', nosi tytuł "Operation Endgame"(Operacja Koniec Gry). Jest to nazwa ostatniego etapu partii szachów.
+* Tytuł odcinka ''„Zmierzch”'' pochodzi od opery [[Richard Wagner|Ryszarda Wagnera]], Zmierzchu Bogów, wchodzącej w skład cyklu ’Pierścień Nibelunga’; na jej treść składają się spiski, zdrady, a całość traktuje o zagładzie świata bogów i ludzi.
+* Nazwa ’Nowa Genesis’ z odcinka ''„Zmierzch”'' przywołuje biblijne Nowe Jeruzalem, czyli opisane w Apokalipsie św. Jana miasto w chmurach, w którym zbawieni obcują z Bogiem.
+* Postać którą Wonder Woman i Batman, spotykają w drodzę na Nową Genesis, nosi imię Forager.
+* W drugiej części odcinka ''„Zmierzch”'' wśród mieszkańców uratowanych z zagłady miasta w chmurach na Nowej Genesis można wyróżnić: Mr. Miracle, Beautiful Dreamer, Big Bear, Mark Moonrider, Serifan i Vykin.
+* W odcinku ''„Tabula Raza”'', Amazo nie zostaje ani razu nazwany po imieniu. Widnieje ono tylko w napisach końcowych i w zapiskach jego twórcy (ale nie zostało to przeczytane).
+* W drugiej części odcinka ''„Tabula Raza”'', kryptonit którego używa Batman to ten sam który Bruce daje Terry’emu w ''„[[Batman przyszłości|Batman Beyond]]”'', w celu powstrzymania Supermana. 
+* Przestępcy których można ujrzeć w śnie Johna Dee, w pierwszej części odcinka ''„To tylko sen”'' to: [[Joker]], Lex Luthor, Shade, Solomon Grundy, Cheetah, Gorilla Grodd, Deadshot, Simon Stagg, Star Sapphire oraz Ultra-Humanite (i możliwe że Ra’s al Ghula). 
+* W pierwszej części odcinka ''„To tylko sen”'', po tym jak Liga złapała wszystkich uciekinierów, Superman mówi, że powinni udać się na odpoczynek. Niewiele później widzimy jak Clark leży w łóżku i czyta wydanie Daily Planet piszące o złapaniu uciekinierów przez Ligę. Tak szybkie wydanie gazety jest nieco dziwne.
+* W pierwszej części odcinka ''„To tylko sen”'', Batman opowiada fragment z dziewiątej księgi [[Odyseja|Odysei]] [[Homer| Homera]], w której Odyseusz i jego załoga zostali uwięzieni przez [[cyklop| Cyklopa]] i dzięki podstępowi Odyseusza mogli bezpiecznie uciec.
+* W drugiej części odcinka ''„To tylko sen”'' sposób w jaki Batman opiera się Dr Destiny, jest podobny do sposobu w jaki opiera się serum w historii ''„Sword of Azrael”''.
+* W drugiej części odcinka ''„To tylko sen”'' młoda para którą Flash pyta na początku odcinka w swoim śnie wyglądają jak Dick Grayson (Nightwing) i Barbara Gordon (Batgirl/Oracle).
+* Scena w drugiej części odcinka ''„To tylko sen”'', kiedy Flash próbuje się obudzić z swego snu, poprzez dzwonienie z budki telefonicznej, być może jest odniesieniem do filmu "The Matrix".
+* W drugiej części odcinka ''„To tylko sen”'' we śnie Johna pojawiają się Al i Chris McGee znani z odcinka ''„W najczarniejszą noc”''.
+* Państwo Kasnia z odcinka ''„Honorowa Dziewczyna”'', zostało wymyślone przez twórców ''„[[Superman: The Animated Series|Superman TAS]]”'' w odcinku ''„The Last Son Of Krypton”''. Następnie jej przedstawiciele, pojawili się w filmie animowanym "Batman: Mystery of the Batwoman", a ich ambosodar Vilmos Egans w serialu ''„[[Batman przyszłości|Batman Beyond]]”'' w odcinku "Rebirth". Sam kraj znajduje się w Europie, prawdopodobnie gdzieś na Bałkanach.
+* W jednym z odcinków ''„[[Batman przyszłości|Batman Beyond]]”'', w odcinku ''„Spellbound”'' Spellbinder kradnie suknie z "kolekcji sukienek ksieżniczki Audrey". 
+* Generał Vox z odcinka ''„Honorowa Dziewczyna”'' ma umiejętność sonicznego krzyku, podobną do tej którą ma superbohaterka Black Canary. Dodatkowo, jego imię "Vox" oznacza po łacinie: "głos".
+* W pierwszej części odcinka ''„Honorowa Dziewczyna”'', pierwszy raz zostaje pokazane alter ego Batmana – Bruce Wayne.
+* W pierwszej części odcinka ''„Honorowa Dziewczyna”'', jeden z gości na przyjęciu wygląda zupełnie jak Vilmos Egans, znany z serialu ''„Batman Beyond”'', z odcinka ''„Rebirth”''.
+* W drugiej części odcinka ''„Honorowa Dziewczyna”'', licząc czas w którym Flash był w kosmosie, nieprawdopodobne jest żeby przeżył. Nawet parę sekund w kosmosie powinno spowodować zamrożenie krwi w jego ciele, a ciśnienie powinno go rozerwać. 
+* W drugiej części odcinka ''„Honorowa Dziewczyna”'', wypowiedź Diany na temat diamentów jest odniesieniem do słynnej piosenki [[Marilyn Monroe]] ''„Diamonds are a Girl’s Best Friend”''.
+* Odcinek ''„Serca i umysły”'' w Cartoon Network (nie polskim) po raz pierwszy wyemitowano w formie godzinnego odcinka pokazując dwie części odcinka. 
+* W pierwszej części odcinka ''„Serca i umysły”'', po raz pierwszy widzimy baterie którą John ładuje swój pierścień oraz Katmę Tui, która w komiksie jest żoną Zielonej Latarni.
+* W drugiej części odcinka ''„Serca i umysły”'', Katma Tui wspomina o 5 (kolejnej) Ziemskiej Zielonej Latarni – Kyle Raynera przedstawionego w odcinku ''„In Brightest Day”'' w serialu ''„Superman: The Animated Series”''.
+* Idea złych członków Ligii z alternatywnej rzeczywistości, z odcinka ''„Lepszy Świat”'' pochodzi od komiksowego Crime Syndicate z Ziemi 3.
+* W odcinku ''„Lepszy Świat”'' symbol noszony przez Batmana z alternatywnej rzeczywistości jest podobny do emblematu znajdującego się na kostiumie Terry’ego McGinnisa z ’Batman Beyond’, a gablota ze strojami innych członków nietoperzej familii, pokazana w powyższym serialu, znajduje się w jaskini ’alter-Batmana’. Kostium alternatywnej Hawkgirl przypomina strój bojowy noszony przez komiksowych żołnierzy Hawkworld czyli Thanagaru. Uniform alternatywnego Martian Manhuntera przypomina ten, który otrzymał po ''„One Year Later”''. Natomiast kostium alternatywnej Wonder Woman jest prawie identyczny ze strojem, który inna Amazońska bohaterka DC Wonder Girl (Donna Troy) nosiła do tzw. ’Kryzysu na Nieskończonych Ziemiach’ który również miał miejsce w świecie DC.
+* Lex Luthor jako prezydent Stanów Zjednoczonych z pierwszej części odcinka ''„Lepszy świat”'' jest ukłonem w stronę kanonu komiksowego DC, gdzie sprawował tą funkcję do czasu wydarzeń opisanych w zeszycie pt. Superman/Batman nr 6.
+* Stwór atakujący miasto pod koniec pierwszej części odcinka ''„Lepszy świat”'' nosi imię Doomsday. Jest ono podane dopiero w napisach końcowych, ale nie pojawia się w samej kreskówce. 
+* Przestępcy z którymi Flash walczy w swojej reklamówce, w pierwszej części odcinka ''„Zaćmienie”'' to Captain Boomerang, Heat Wave i Mirror Master.
+* W pierwszej części odcinka ''„Zaćmienie”'', kostium generała będącego pod kontrolę kamienia jest identyczny jaki nosił jeden z wrogów Phantom Strangera będący pod panowaniem istoty, tytułującej się jako Eclipso.
+* W komiksie Glorious Godfrey, jest złym "Nowym Bogiem" przysłanym z Apokolips, w celu zwrócenia opnii publicznej przeciw Lidze Sprawiedlich, aby ułatwić inwazje Darkside'a na Ziemie.
+* Scena z odcinka ''„Zaćmienie”'' w której Godfrey, mówi o książce "The Innocent Seduced" autorstwa "Dr. Frederic'a", odnosi się do książki "Seduction of the Innocent" napisanej w 1950 roku przez Fredric'a Wertham'a, który oskarżył komiksy o korumpowanie nieletnich. 
+* Scena z drugiej części odcinka ''„Zaćmienie”'' w której Godfrey zakłada na głowę czapkę z flagą USA i mówi ''„Potrzebuję Was”'' jest parodią James Montgomery Flagg’s World War i plakatu rekrutacyjnego z Wujkiem Samem wskazującym i mówiącym ''„Potrzebuję WAS!”''.
+* Historia przedstawiona w odcinku ''„Terror zza grobu”'', jest nawiązaniem do świata Cthulhu Mythos, stworzonego przez pisarza horrorów H. P. Lovecraft'a.
+* Łączenie w jedną drużynę Doctor'a Fate'a, Aquaman'a oraz Solomon'a Grundy'ego w odcinku ''„Terror zza grobu”'', jest prawdopodobnym nawiązaniem do grupy superbohaterów - The Defenders(Doctor Strange, Namor oraz Hulk), stworzonych przez wydawnictwo Marvel Comics.
+* Fabuła odcinka ''„Terror zza grobu”'' nawiązuje bardzo wyraźnie do Mitologii Cthulhu – Icthultu, dawne bóstwo Thanagaru, niezmiernie przypomina samego Władcę R’lyeh.
+* Zdanie ''„Jeśli chcesz żyć, chodź ze mną”'' które Aquaman mówi do Grundy’ego w pierwszej części odcinka ''„Terror za grobu”'' jest podobne do tego z filmu ''„[[Terminator 2: Dzień sądu]]”''. Schwarzenegger mówi do Lindy Hamilton ''„Chodż że mną, jeśli chcesz żyć!”''.
+* W drugiej części odcinka ''„Terror zza grobu”'' napis na grobie Grundy’ego: Solomon Grundy – Urodzony w Poniedziałek jest tylko częścią, pełna rymowanka brzmi: 
+: Solomon Grundy,
+: Urodzony w Poniedziałek,
+: Ochrzczony w Wtorek,
+: Żonaty w Środę,
+: Skrzywdzony w Czwartek,
+: Osłabiony w Piątek,
+: Zmarły w Sobotę,
+: Pochowany w Niedzielę:
+: To jest koniec o Solomonie Grundym. 
+* Właścicielem wyspy która została zaatakowana przez Secret Society, w pierwszej części odcinka ''„Tajne Stowarzyszenie”'' jest Morgan Edge. Jest to aluzja do komiksowego przeciwnika Supermana o tym samym imieniu, będącego członkiem i liderem grupy przestępców o nazwie Intergang. 
+* W drugiej części odcinka ''„Tajne Stowarzyszenie”'', podczas przerwy meczu finałowego, jeden z fanów trzyma na trybunach wielki napis ''„Gotham Girls”'', jest to nawiązanie do serialu o przeciwniczkach Batmana: Catwoman, Poison Ivy i Harley Quinn, pod tym samym tytułem.
+* Pierwotnie w odcinku ''„Później”'', miał wstąpić Captain Marvel.
+* Po rzekomej śmierci Supermana, w pierwszej części odcinka ''„Później”'' każdy z członków ligi proponuje innego herosa na jego miejsce:
+: Flash – Aquamana
+: Green Lantern – Metamorpho
+: Hawkgirl – Supergirl
+: Wonder Woman – proponuje dać Batmanowi pełne członkostwo
+: Martian Manhunter – Green Arrowa
+Z drugiej części odcinka ''„Później”'' dowiadujemy się że gdyby Superman nie powrócił, wybór padł by na Aquamana.
+* Cała druga część odcinka ''„Później”'' jest stworzona na podstawie klasycznej komiksowej historii o Supermanie ''„Under a Red Son”''.
+* Grupa superprzestępców z pierwszej części odcinka ''„Później”'' nosi nazwę Superman Revenge Squad, a w jej skład wchodzą: Metallo, Kalibak, Livewire, Weather Wizard i Toyman. 
+* Pogrzeb Supermana w pierwszej części odcinka ''„Później”'' przypomina klasyczną historię ''„Funeral for a Friend”'', włączając w to Batmana obserwującego procesję z dachu.
+* Na pogrzebie Supermana w odcinku ''„Później”'' można dostrzec: Kilowoga, Aquamana, Mere, Supergirl, Lane Lang, Perrego White’a, Dr Fate’a, Inze Nelson, Jimmy Olsena, Jonathana i Marthe Kent, Kyle Rayner'a, Lightray, Bibbo Bibbowskiego, Katme Tui, Oriona, Supergirl, Maggie Sawyer, Steela, Natashe Irons, Larvoxa, Tomar Re, Tima Drake’a oraz Barbare Gordon.
+* Druga część odcinka ''„Później”'' przypomina powieść Richard'a Matheson'a - "I Am Legend".
+* W drugiej części odcinka ''„Później”'' Superman ma w samochodzie batoniki jakie Flash reklamował w odcinku ''„Zaćmienie”'', a Lobo tak jak w komiksie nie zostaje przyjęty do Ligi Sprawiedliwości.
+* W odcinku ''„Radość i pocieszenie”'' po raz pierwszy widzimy, że J’onn przybiera ludzką postać jaką przybierał w komiksie ''„John Jones”''.
+* W odcinku ''„Radość i pocieszenie”'' w domu państwa Kentów, pojawia się kot będący prawdopodobnie Streaky'm kotem Supergirl, który w komiksy otrzymał supermoce wskutek napromieniowania kryptonitem.
+* W odcinku ''„Radość i pocieszenie”'' twórcy nawiązali do zamiłowania J'onna, do ciasteczek Czekoladowej Markizy z masą waniliową, znanej z komiksów. 
+* Kolęda słyszana przez J'onn'a z kościoła, w czasie swego spaceru w odcinku ''„Radość i pocieszenie”'' to "It Came Upon the Midnight Clear".
+* Powitanie Sokolicy w kosmicznym barze, w odcinku ''„Radość i pocieszenie”'', przypomina tradycyjne powitanie Norm Peterson w serialu ''„Cheers”''.
+* W odcinku ''„As w rękawie”'' Joker używa pseudonimu: "Gwynplaine Entertainmen". Gwynplaine Entertainmen jest bohaterem powieści "The Man Who Laughs", autorstwa Victor'a Hugo. Co ciekawe, to właśnie na Gwynplaine wzorował się Bob Kane, tworząc wizerunek Jokera. 
+* W odcinku ''„As w rękawie”'' Joker daje Lidze 22 godziny i 50 minut na rozbrojenie bomb. Każdy pojedynczy odcinek przeciętnego serialu telewizyjnego, trwa właśnie 22 minuty i 50 sekund, jeśli odjąć czas na reklamy i napisy końcowe.
+* W pierwszej części odcinka ''„As w rękawie”'' John Stewart rozbraja bombę Jokera, w kasynie o nazwie Amos Fortune. Jest to nawiązanie do postaci superprzestępcy Amosa Fortune, twórcy oryginalnego The Royal Flush Gangu.
+* Kiedy Queen pokrywa się zroją i tworzy sobie miecz w pierwszej części odcinka ''„As w rękawie”'', Sokolica kpiącą zwraca sie do niej: "Joanna d'Arc".
+* Imię przywódcy floty Thanagaru Hro Talaka z odcinka ''„Niepisane w gwiazdach”'' to anagram prawdziwego imienia innego komiksowego bohatera świata DC: Hawkmana – Katar Hol.
+* Powód zniszczenia Ziemi dla zbudowania hiperprzestrzennej obwodnicy, w odcinku ''„Niepisane w gwiazdach”'', jest prawdopodobnie zaczerpnięte z historii "Autostopem przez Galaktykę", autorstwa Douglas'a Adams'a.
+* Właściciel restauracji, w której Batman i Wonder Women znajdują schronienie przed Thanagarianami, w drugiej części odcinka ''„Niepisane w gwiazdach”'', wygląda zupełnie jak Dr. Padu Banjahri, z serialu ''„Batman Beyond”'', z odcinka ''„Curse Of The Kobra”''.
+* W drugiej części odcinka ''„Niepisane w gwiazdach”'', Flash nazywa Alfreda - "Jeeves". Od imienia postaci, wymyślonej przez pisarza P. G. Wodehouse'a.
+* Z drugiej części odcinka ''„Niepisane w gwiazdach”'' dowiadujemy się, że Gotham City (lub jego przedmieścia) znajdują się 48,28 km od Metropolis.
+* W trzeciej części odcinka ''„Niepisane w gwiazdach”'', w czasie walki w jaskini Batmana, Batman używając dźwiękowych batrangów, szczuje na Thanagarian rój nietoperzy. Ten motyw został zaczerpnięty z komiksowej historii "Batman: Year One". Później został jeszcze wykorzystany w filmie ''„Batman Begins”''.
+* W trzeciej części odcinka ''„Niepisane w gwiazdach”'', w czasie walki w jaskini Batmana, Kragger używa zamrazającej broni Mr. Freeze'a, jednego z przeciwników Batmana. 
+* Jedna z ostatnich scen odcinka ''„Niepisane w gwiazdach”'', przywołuje na myśl komiksową historię "Towers of Babel", w której członkowie Ligii debatują nad wykluczeniem z drużyny, jednego z członków(w tej historii był nim Batman).
+{{endspoiler}}
+== Linki zewnętrzne ==
+* [http://kryptonleague.com.pl/www/index.php?id=115,228,0,0,1,0 KryptonLeague.com.pl] – dział o serialu ''„Liga Sprawiedliwych”'' {{lang|pl}}
+* [http://www.batcave.stopklatka.pl/indexa.php?id=odcjla BatCave.stopkatka.pl] – dział o serialu ''„Liga Sprawiedliwych”'' {{lang|pl}}
+<br>
+{{Toonami}}
+{{Kreskówki Warner Brothers}}
+
+[[Kategoria:Amerykańskie seriale animowane]]
+[[Kategoria:Filmy i seriale z Batmanem]]
+
+[[bg:Лигата на справедливостта (анимационен сериал)]]
+[[en:Justice League (TV series)]]
+[[es:Liga de la Justicia (serie animada)]]
+[[it:Justice League (serie animata)]]
+[[he:ליגת הצדק (סדרת אנימציה)]]
+[[ru:Лига Справедливости (мультсериал)]]
+[[pt:Liga da Justiça (desenho)]]
+[[th:จัสติสลีก]]
