@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.5.17;
+our $VERSION = 0.5.18;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -435,15 +435,18 @@ sub popraw_pisownie {
 	$linia =~ s/\bz pośród\b/spośród/g;
 	$linia =~ s/\bZ pośród\b/Spośród/g;
 	$linia =~ s/\b(W|w) śród\b/$1śród/g;
-	$linia =~ s/(W|w)ogóle/$1 ogóle/g;
-	$linia =~ s/(W|w) skutek/$1skutek/g;
-	$linia =~ s/\bwiekszy\b/większy/g;
+	$linia =~ s/\b(W|w)(?:ogóle|ogule|ogle)\b/$1 ogóle/g;
+	$linia =~ s/\b(W|w) skutek\b/$1skutek/g;
+	$linia =~ s/\b([wW])iekszy\b/$1iększy/g;
 	$linia =~ s/\bspowrotem\b/z powrotem/g;
+	$linia =~ s/\bSpowrotem\b/Z powrotem/g;
 	$linia =~ s/\bspowodu\b/z powodu/g;
 	$linia =~ s/\bz pod\b/spod/g;
 	$linia =~ s/\bZ pod\b/Spod/g;
 	$linia =~ s/\bz nad\b(?! wyraz)/znad/g;
 	$linia =~ s/\bZ nad\b(?! wyraz)/Znad/g;
+	$linia =~ s/\bz przed\b/sprzed/g;
+	$linia =~ s/\bZ przed\b/Sprzed/g;
 	$linia =~ s/\bz poza\b/spoza/g;
 	$linia =~ s/\bZ poza\b/Spoza/g;
 	$linia =~ s/\b(p|P)onad to\b/$1onadto/g;
@@ -454,17 +457,24 @@ sub popraw_pisownie {
 	$linia =~ s/\bZ\s?tąd\b/Stąd/g;
 	$linia =~ s/\bz tamtąd\b/stamtąd/g;
 	$linia =~ s/\bZ tamtąd\b/Stamtąd/g;
+	$linia =~ s/\bz nikąd\b/znikąd/g;
+	$linia =~ s/\bZ nikąd\b/Znikąd/g;
 	$linia =~ s/\b(Na|na) codzień\b/$1 co dzień/g;
 	$linia =~ s/\b(Po|po)prostu\b/$1 prostu/g;
 	$linia =~ s/\b(Na|na)pewno\b/$1 pewno/g;
 	$linia =~ s/\b(Co|co)najmniej\b/$1 najmniej/g;
 	$linia =~ s/\b(Na|na)razie\b/$1 razie/g;
+	$linia =~ s/\b(Od|od)razu\b/$1 razu/g;
 	$linia =~ s/\b(Na|na) codzień\b/$1 co dzień/g;
 	$linia =~ s/\b(Co|co) dzienn(ych|y|ie|e|a)\b/$1dzienn$1/g;
 	$linia =~ s/\b(Na|na) prawdę\b/$1prawdę/g;
 	$linia =~ s/\b(Na|na) przeciwko\b/$1przeciwko/g;
 	$linia =~ s/\b(Do|do) okoła\b/$1okoła/g;
 	$linia =~ s/\bporaz\b/po raz/g;
+	$linia =~ s/\b([Ww])(głąb|skład)\b/$1 $2/g;
+	$linia =~ s/\b(Do|do) tond\b/$1tąd/g;
+	$linia =~ s/\b(?:stond|z tąd|z tond)\b/stąd/g;
+	$linia =~ s/\b(?:Stond|Z tąd|Z tond)\b/Stąd/g;
 	$linia =~ s/\bwszechczasów\b/wszech czasów/g;
 	$linia =~ s/\b((s|S)tandar)t(owymi|owym|owy|owa|owych|owe|ową|ów|om|u|y)?\b/$1d$3/g;
 	$linia =~ s/\bstandarcie\b/standardzie/g;
