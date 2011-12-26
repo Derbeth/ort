@@ -80,7 +80,11 @@ if ($_GET['server']) {
 	$title = $_GET['title'];
 	$title = stripslashes($title);
 	$title = urlencode($title);
-	$url = $_GET['server'].$_GET['script'].'?title='.$title.'&action=raw';
+	$server = $_GET['server'];
+	if (!preg_match('/^http/', $server)) {
+		$server = "http:$server";
+	}
+	$url = $server.$_GET['script'].'?title='.$title.'&action=raw';
 	$url = escapeshellarg($url);
 	$command = "wget -v -O - $url";
 	$input = shell_exec($command);
@@ -169,7 +173,7 @@ print '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.o
 </head>
 <body>
 
-<p>Skrypt poprawia ortografię w hasłach z Wikipedii, Wikibooks itp. (korzystających z formatowania MediaWiki) albo czystym, zwykłym tekście.</p> <p>Poprawia nieprawidłowe użycie apostrofu ("Disney'a"), nieprawidłową odmianę skrótowców ("SMSa" wzgl. "SMS'a"), błędną odmianę liczebników ("13-stego/-tego/-ego/-go", "5-cio osobowy", "4 bajtowy"), nieprawidłowy zapis skrótów ("wg."), częste błędy pisowni ("ziemii", "wogóle", "z tąd"). Ogólnie - usuwa dużą część błędów ze strony <a href="http://pl.wikipedia.org/wiki/Pomoc:Powszechne_błędy_językowe">Powszechne będy językowe</a> i trochę dodatkowych. Wykonuje też proste sprzątanie wikikodu (gł. poprawę linków). Problemów wskazywanych przez skrypt <strong>nie wykryje</strong> zazwyczaj ani Word ani OpenOffice (chyba że doinstalujemy <a href="http://www.languagetool.org/">LanguageTool</a>, co mocno polecam).</p>
+<p>Skrypt poprawia ortografię w hasłach z Wikipedii, Wikibooks itp. (korzystających z formatowania MediaWiki) albo czystym, zwykłym tekście.</p> <p>Poprawia nieprawidłowe użycie apostrofu ("Disney'a"), nieprawidłową odmianę skrótowców ("SMSa" <abbr title="względnie">wzgl.</abbr> "SMS'a"), błędną odmianę liczebników ("13-stego/-tego/-ego/-go", "5-cio osobowy", "4 bajtowy"), nieprawidłowy zapis skrótów ("wg."), częste błędy pisowni ("ziemii", "wogóle", "z tąd"). Ogólnie - usuwa dużą część błędów ze strony <a href="http://pl.wikipedia.org/wiki/Pomoc:Powszechne_błędy_językowe">Powszechne będy językowe</a> i trochę dodatkowych. Wykonuje też proste sprzątanie wikikodu (gł. poprawę linków). Problemów wskazywanych przez skrypt <strong>nie wykryje</strong> zazwyczaj ani Word ani OpenOffice (chyba że doinstalujemy <a href="http://www.languagetool.org/">LanguageTool</a>, co mocno polecam).</p>
 <p>Skrypt był rozwijany przez około rok, więc jest dość stabilny i nie robi głupot. Wciąż jednak może psuć adresy internetowe i nazwy grafik (nazwa po francusku nie musi stosować się do polskiej ortografii), więc na Wikipedii <strong>można go stosować tylko wraz z użyciem podglądu zmian</strong> (przycisk "Podgląd zmian" na prawo od "Pokaż podgląd"). Dla wikipedystów istnieje wersja działająca jako <a href="http://pl.wikipedia.org/wiki/Wikipedysta:Derbeth/ort">przycisk w polu edycji</a>.</p>
 <form method="post" action=".">
 <fieldset>
