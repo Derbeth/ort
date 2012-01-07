@@ -10,6 +10,7 @@ $typogr = 0;
 $br = 0;
 $kropki = 0;
 $rzymskie = 0;
+$ryzykowne = 0;
 
 function writeToFile($name, $text) {
 	$src = fopen($name, 'w');
@@ -49,21 +50,25 @@ if (!$_POST['input'] && !$_GET['title']) {
 	$br = 1;
 	$kropki = 1;
 	$rzymskie = 0;
+	$ryzykowne = 1;
 } else {
 	if ($_POST['interp']) $interp = (int)$_POST['interp'];
 	if ($_GET['interp']) $interp = (int)$_GET['interp'];
-	
+
 	if ($_POST['typogr']) $typogr = (int)$_POST['typogr'];
 	if ($_GET['typogr']) $typogr = (int)$_GET['typogr'];
-	
+
 	if ($_POST['br']) $br = (int)$_POST['br'];
 	if ($_GET['br']) $br = (int)$_GET['br'];
-	
+
 	if ($_POST['kropki']) $kropki = (int)$_POST['kropki'];
 	if ($_GET['kropki']) $kropki = (int)$_GET['kropki'];
-	
-	if ($_POST['rzymskie']) $rzymskie = (int)$_POST['rzymskie']; 
+
+	if ($_POST['rzymskie']) $rzymskie = (int)$_POST['rzymskie'];
 	if ($_GET['rzymskie']) $rzymskie = (int)$_GET['rzymskie'];
+
+	if ($_POST['ryzykowne']) $ryzykowne = (int)$_POST['ryzykowne'];
+	if ($_GET['ryzykowne']) $ryzykowne = (int)$_GET['ryzykowne'];
 }
 
 if ($_POST['input']) {
@@ -94,22 +99,22 @@ if ($_GET['server']) {
 
 if( $_POST['diff']) {
 	$after = stripslashes($_POST['output']);
-	
+
 	$no = rand(0,2000);
 	$infile1 = "diffb$no.txt";
 	$infile2 = "diffa$no.txt";
 	$outfile = "diff$no.txt";
-	
+
 	writeToFile($infile1, $input);
 	writeToFile($infile2, $after);
-	
+
 	exec("./diff2html.py --only-changes $infile1 $infile2 > $outfile");
 	unlink($infile1);
 	unlink($infile2);
-	
+
 	$result = readFromFile($outfile);
 	unlink($outfile);
-	
+
 	echo $result;
 	exit;
 }
@@ -117,17 +122,17 @@ if ($has_params) {
 	$no = rand(0,2000);
 	$infile = "in$no.txt";
 	$outfile = "out$no.txt";
-	
+
 	writeToFile($infile, $input);
-	
-	exec("cd script && ./text.pl ../$infile ../$outfile -i $interp -t $typogr -k $kropki -b $br -r $rzymskie");
+
+	exec("cd script && ./text.pl ../$infile ../$outfile -i $interp -t $typogr -k $kropki -b $br -r $rzymskie -x $ryzykowne");
 	unlink($infile);
-	
+
 	$output = readFromFile($outfile);
-	#$output = "-i $interp -t $typogr -k $kropki -b $br -r $rzymskie\n" . $output;
-    
+	#$output = "-i $interp -t $typogr -k $kropki -b $br -r $rzymskie -x $ryzykowne\n" . $output;
+
     unlink($outfile);
-    
+
     if (!$by_get) {
     	$input = htmlspecialchars($input);
 		$output = htmlspecialchars($output);
@@ -147,7 +152,7 @@ if ($_GET['server']) {
 	#$tf = fopen('out.txt','w');
 	#fwrite($tf,$output);
 	#fclose($tf);
-	
+
 	#$output = stripslashes($output);
 	$output = str_replace("\n", "`_", $output);
 	$output = str_replace("\\", "\\\\", $output);
@@ -197,6 +202,8 @@ print '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.o
 <label>Zapis tysięcy<input type="checkbox" name="kropki" value="1" <?php toChkd($kropki); ?>/></label>
 <label>Ryzykowne <abbr title="poprawki">popr.</abbr> liczb rzymskich
 <input type="checkbox" name="rzymskie" value="1" <?php toChkd($rzymskie); ?>/></label>
+<label>Pozostałe ryzykowne
+<input type="checkbox" name="ryzykowne" value="1" <?php toChkd($ryzykowne); ?>/></label>
 </p>
 </form>
 <?php if ($output) { ?>
