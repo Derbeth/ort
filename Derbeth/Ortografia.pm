@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.5.18;
+our $VERSION = 0.6.0;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -37,6 +37,7 @@ our $usun_kropki_z_liczb = 1; # niebezpieczne: zamienia 1.000 na 1 000
 our $typografia = 1;
 our $interpunkcja = 1;
 our $kasuj_bry = 1;
+our $ryzykowne = 1; # rozne nieco ryzykowne poprawki
 
 # eg. safe_replace("(\w)'(\w)", "$1-$2"
 sub safe_replace {
@@ -113,7 +114,8 @@ sub popraw_skrotowce {
 	if ($linia =~ /([a-zA-ZłśżŁŚŻ][A-ZŁŚŻ])(\]\])?('|’|`|- | -|–|—)?(ach|ami|zie|ów|ka|etu|ecie|ocie|otu|owych|owym|owy|owi|owa|owe|ką|kę|(?:(?:ow)?(?:skie|skich|skim|ski|ską))|iem|em|ie|i|a|e|ę|u|y)\b(?![a-zćłńóśźż])/) {
 		my ($m1,$m2,$m4,$match,$before, $after) = ($1,$2,$4,$MATCH,$PREMATCH,$POSTMATCH);
 		$m2 = '' unless($m2);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && $match !~ /kPa|kDa|\bI[a-z]\b/) {
+		if (($ryzykowne || $m2)
+		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && $match !~ /kPa|kDa|\bI[a-z]\b/) {
 			$match = "$m1$m2-$m4"; # LOTu -> LOT-u
 		}
 		$after = popraw_skrotowce($after);
@@ -129,8 +131,9 @@ sub popraw_porzadkowe {
 	}
 	
 	if ($linia =~ /(\d|\b[XIV]+\b)(\]\])?( ?- ?|'|–|—)?(stym|tym|dmym|mym|wszym|szym|ym|stymi|tymi|ymi|stych|tych|sty|ty|stą|tą|ą|sta|ta|stej|dmej|mej|tej|ej|wszego|szego|wszej|szej|stego|tego|dmego|mego|ste|te|dme|ciego|ciej|cim|cie|cia|cią|ci|gim|im|giego|giej|gie|gi|go|ga|iej|iego|wsza|sza|wsze|sze|wszych|szych|dmych|mych|ych|dmy|my|dma|ma|dmą|mą|wszy|szy|me|e|ego|go|y|ą)\b/) {
-		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
+		if (($ryzykowne || $m3)
+		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			if ($m1 =~ /\d+/) {
 				$match = "$m1."; # 10-te -> 10.
 			} else {
@@ -202,17 +205,19 @@ sub interpunkcja {
 	$linia =~ s/,(podczas (któr(ych|ej|ego)|gdy|kiedy)|jako że|mimo że|taki jak)\b/, $1/g;
 	$linia =~ s/,((z|bez|od|do|po|dla) (któr(ymi|ym|ej|ego|ych|ym|ą)))\b/, $1/g;
 	$linia =~ s/ ?,(kiedy|że|któr(ego|ej|ych|ym|y|ą|e)|mimo|chociaż|a|od)\b/, $1/g;
-	
-	my ($done, $todo) = ('', $linia); # coś.Niecoś -> coś. Niecoś
-	while ($todo =~ /([a-ząćęłńóśżź\]])\.([A-ZĄĆĘŁŃÓŚŻŹ])/) {
-		my ($before,$match,$after,$m1,$m2) = ($`,$&,$',$1,$2);
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) { 
-			$match = "$1. $2";
+
+	if ($ryzykowne) {
+		my ($done, $todo) = ('', $linia); # coś.Niecoś -> coś. Niecoś
+		while ($todo =~ /([a-ząćęłńóśżź\]])\.([A-ZĄĆĘŁŃÓŚŻŹ])/) {
+			my ($before,$match,$after,$m1,$m2) = ($`,$&,$',$1,$2);
+			if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) { 
+				$match = "$1. $2";
+			}
+			$done .= $before.$match;
+			$todo = $after;
 		}
-		$done .= $before.$match;
-		$todo = $after;
+		$linia = $done.$todo;
 	}
-	$linia = $done.$todo;
 	
 	#$linia = safe_replace("([a-ząćęłńóśżź])\.([A-ZĄĆĘŁŃÓŚŻŹ])", "$1. $2", $linia);
 	# norm
@@ -357,7 +362,7 @@ sub popraw_pisownie {
 	$linia =~ s/80( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/osiemdziesiąt$4/g;
 	$linia =~ s/90( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/dziewięćdziesiąt$4/g;
 	
-	{
+	if ($ryzykowne) {
 		my ($done, $todo) = ('', $linia);  # 4.. -> 4. ale nie 4...
 		while ($todo =~ /(\d)\.\.(?!\.)/) {
 			my ($before, $match, $after, $m1) = ($`,$&,$',$1);
@@ -405,7 +410,9 @@ sub popraw_pisownie {
 	$linia =~ s/ieego\b/iego$1/g; # Laurieego -> Lauriego
 	$linia =~ s/(Mar|Eri)ciem\b/$1kiem/g; # Marciem, Markem -> Markiem, Ericiem -> Erikiem
 	$linia =~ s/\bMarkem\b/Markiem/g;
-	$linia =~ s/y('|’|`|-|–|—)iego/y’ego/g; # Percy'iego -> Percy'ego
+	$linia =~ s/a('|’|`)([ąęy])\b/$2/g; # Laura'y -> Laury
+	$linia =~ s/(oe)('|’|`|-)(go|m)\b/$1$3/g; # Joe'go -> Joego
+	$linia =~ s/y('|’|`|-|–|—)iego\b/y’ego/g; # Percy'iego -> Percy'ego
 	$linia =~ s/y('|’|`|-)m\b/ym/g; # Tony'm -> Tonym '
 	$linia = popraw_em($linia);	
 	$linia =~ s/Jacquesa\b/Jacques’a/g;
