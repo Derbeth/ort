@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.2;
+our $VERSION = 0.6.3;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -186,8 +186,9 @@ sub popraw_liczebniki2 {
 	}
 	
 	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(miu|toma|cioma|ciu|wu|stu|ech|tu|óch|ch|u)\b/) {
-		my ($m1,$match,$before,$after) = ($1,$MATCH,$PREMATCH,$POSTMATCH);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
+		if (($ryzykowne || $2)
+		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$1"; # 12-tu -> 12
 		}
 		$after = popraw_liczebniki2($after);
@@ -287,7 +288,7 @@ sub typografia {
 sub popraw_pisownie {
 	my $linia = shift;
 	#$linia =~ s/, to/ to/g; # Usuwanie tekstów w stylu "Komputer, to maszyna licząca".
-   
+
 	$linia =~ s/ \]\] /]] /g; # usuwanie spacji przed koncem linku
 	$linia =~ s/ \[\[ / \[\[/g; # usuwanie spacji na początku linkus
 	$linia =~ s/\bnr\.(\d)/nr $1/g; # nr.10 -> nr 10
