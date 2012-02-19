@@ -401,16 +401,16 @@ sub popraw_pisownie {
 	}
 	
 	# apostrofy
-	$linia =~ s/(Mik|remak|Remak)e('|’|`|-|–|—)(em|m)\b/$1iem/g; # Mike'm -> Mikiem
-	$linia =~ s/\[\[\s*(Mik|remak|Remak)e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
-	$linia =~ s/(Mik|remak|Remak)e('|’|`|-|–|—)(i)\b/$1i/g;   # remake'i -> remaki
-	$linia =~ s/\[\[\s*(Mik|remak|Remak)e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
-	$linia =~ s/\B(ell)i(?:'|’|`|-)?(ego|emu)\b/$1$2/g; # Botticelliemu -> Botticellemu
-	$linia =~ s/\[\[([^\]|]+ell)i\]\](?:'|’|`|-)?(ego|emu)\b/[[$1i|$1$2]]/g; # [[Sandro Botticelli]]ego
-	
 	$linia =~ s/\B(oy|ey)('|’|`|-|–|—)e?go\b/$1’a/g;
 	
 	$linia = popraw_apostrofy($linia);
+	$linia =~ s/(Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(em|m)\b/$1iem/g; # Mike'm -> Mikiem
+	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
+	$linia =~ s/(Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(i)\b/$1i/g;   # remake'i -> remaki
+	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
+	$linia =~ s/\B(ell)i(?:'|’|`|-)?(ego|emu)\b/$1$2/g; # Botticelliemu -> Botticellemu
+	$linia =~ s/\[\[([^\]|]+ell)i\]\](?:'|’|`|-)?(ego|emu)\b/[[$1i|$1$2]]/g; # [[Sandro Botticelli]]ego
+
 	$linia =~ s/ieego\b/iego$1/g; # Laurieego -> Lauriego
 	$linia =~ s/(Mar|Eri)ciem\b/$1kiem/g; # Marciem, Markem -> Markiem, Ericiem -> Erikiem
 	$linia =~ s/\bMarkem\b/Markiem/g;
