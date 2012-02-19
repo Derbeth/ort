@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.0;
+our $VERSION = 0.6.1;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -411,7 +411,7 @@ sub popraw_pisownie {
 	$linia =~ s/(Mar|Eri)ciem\b/$1kiem/g; # Marciem, Markem -> Markiem, Ericiem -> Erikiem
 	$linia =~ s/\bMarkem\b/Markiem/g;
 	$linia =~ s/a('|’|`)([ąęy])\b/$2/g; # Laura'y -> Laury
-	$linia =~ s/(oe)('|’|`|-)(go|m)\b/$1$3/g; # Joe'go -> Joego
+	$linia =~ s/(oe)((?:\]\])?)('|’|`|-)(go|m)\b/$1$2$4/g; # Joe'go -> Joego
 	$linia =~ s/y('|’|`|-|–|—)iego\b/y’ego/g; # Percy'iego -> Percy'ego
 	$linia =~ s/y('|’|`|-)m\b/ym/g; # Tony'm -> Tonym '
 	$linia = popraw_em($linia);	
