@@ -401,11 +401,12 @@ sub popraw_pisownie {
 	}
 	
 	# apostrofy
-	$linia =~ s/(Andrew|Matthew)('|’|`|-|–|—)?(a|em|ie|owi)/$1/g; # Andrew'a -> Andrew
-	$linia =~ s/(Mik|remak|Remak)e('|’|`|-|–|—)(em|m)/$1iem/g; # Mike'm -> Mikiem
-	$linia =~ s/\[\[\s*(Mik|remak|Remak)e\s*\]\]('|’|`|-|–|—)(em|m)/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
-	$linia =~ s/(Mik|remak|Remak)e('|’|`|-|–|—)(i)/$1i/g;   # remake'i -> remaki
-	$linia =~ s/\[\[\s*(Mik|remak|Remak)e\s*\]\]('|’|`|-|–|—)(i)/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
+	$linia =~ s/(Mik|remak|Remak)e('|’|`|-|–|—)(em|m)\b/$1iem/g; # Mike'm -> Mikiem
+	$linia =~ s/\[\[\s*(Mik|remak|Remak)e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
+	$linia =~ s/(Mik|remak|Remak)e('|’|`|-|–|—)(i)\b/$1i/g;   # remake'i -> remaki
+	$linia =~ s/\[\[\s*(Mik|remak|Remak)e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
+	$linia =~ s/\B(ell)i(?:'|’|`|-)?(ego|emu)\b/$1$2/g; # Botticelliemu -> Botticellemu
+	$linia =~ s/\[\[([^\]|]+ell)i\]\](?:'|’|`|-)?(ego|emu)\b/[[$1i|$1$2]]/g; # [[Sandro Botticelli]]ego
 	
 	$linia =~ s/\B(oy|ey)('|’|`|-|–|—)e?go\b/$1’a/g;
 	
@@ -427,6 +428,7 @@ sub popraw_pisownie {
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(em|m)\b/$1e$2’em/g;
 	$linia =~ s/(Barr|Dann|Gar|Gretzk|Harr|Perc|Perr|Terr|Timoth)y?((?:\]\])?)(ego|emu)\b/$1y$2’$3/g;
 
+	$linia =~ s/(Andrew|Matthew)('|’|`|-|–|—)?(a|em|ie|owi)/$1/g; # Andrew'a -> Andrew
 	$linia =~ s/Jacquesa\b/Jacques’a/g;
 	$linia =~ s/Charles(a|em|owi) de Gaulle/Charles’$1 de Gaulle/gi;
 	$linia =~ s/(François)('|’|`|-)?(a|em)\b/$1/g; # Françoisa -> François
