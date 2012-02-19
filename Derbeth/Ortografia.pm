@@ -111,7 +111,7 @@ sub popraw_apostrofy3 {
 
 sub popraw_skrotowce {
 	my $linia = shift;
-	if ($linia =~ /([a-zA-ZłśżŁŚŻ][A-ZŁŚŻ])(\]\])?('|’|`|- | -|–|—)?(ach|ami|zie|ów|ka|etu|ecie|ocie|otu|owych|owym|owy|owi|owa|owe|ką|kę|(?:(?:ow)?(?:skie|skich|skim|ski|ską))|iem|em|ie|i|a|e|ę|u|y)\b(?![a-zćłńóśźż])/) {
+	if ($linia =~ /([a-zA-ZłśżŁŚŻ][A-ZŁŚŻ])(\]\])?('|’|`|- | -|–|—)?(ach|ami|zie|ów|ka|etu|ecie|ocie|otu|owych|owym|owy|owi|owa|owe|ką|kę|(?:(?:ow)?(?:skie|skich|skim|ski|ską))|iem|em|om|ie|i|a|e|ę|u|y)\b(?![a-zćłńóśźż])/) {
 		my ($m1,$m2,$m4,$match,$before, $after) = ($1,$2,$4,$MATCH,$PREMATCH,$POSTMATCH);
 		$m2 = '' unless($m2);
 		if (($ryzykowne || $m2)
@@ -148,7 +148,7 @@ sub popraw_porzadkowe {
 
 sub popraw_em {
 	my $linia = shift;
-	if ($linia =~ /(b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z)e('|’|`|-|–|—)m\b/) {		
+	if ($linia =~ /(b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z)e('|’|`|-|–|—)m\b/) {
 		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$1e$2em"; # Steve'm -> Steve'em
@@ -314,7 +314,7 @@ sub popraw_pisownie {
    $linia =~ s/(\b[XIV]+)\. (wiek|wieczn|stuleci)/$1 $2/g; # XX. wieku -> XX wieku
    $linia =~ s/((w|W)ieku?) (\b[XIV]+)\./$1 $3/g; # wiek XX. -> wiek XX 
    $linia =~ s/(\b[XIV]+)( |- | -| - |[–—])(wieczn)/$1-$3/g; # XX wieczny -> XX-wieczny
-   
+
 	$linia =~ s/(godzin(a|ie|ą)) (\d+)\.(?!\d)/$1 $3/g; # o godzinie 10. -> o godzinie 10
 	$linia =~ s/(\d)\. (stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia)/$1 $2/gi; # 1. stycznia -> 1 stycznia
 	
@@ -412,16 +412,16 @@ sub popraw_pisownie {
 	$linia =~ s/\bMarkem\b/Markiem/g;
 	$linia =~ s/a('|’|`)([ąęy])\b/$2/g; # Laura'y -> Laury
 	$linia =~ s/(oe)((?:\]\])?)('|’|`|-)(go|m)\b/$1$2$4/g; # Joe'go -> Joego
+	$linia =~ s/\Be('|’|`)go\b/ego/g; # Mecke'go -> Meckego
 	$linia =~ s/y('|’|`|-|–|—)iego\b/y’ego/g; # Percy'iego -> Percy'ego
 	$linia =~ s/y('|’|`|-)m\b/ym/g; # Tony'm -> Tonym '
-	$linia = popraw_em($linia);	
+	$linia = popraw_em($linia);
 	$linia =~ s/Jacquesa\b/Jacques’a/g;
 	$linia =~ s/Charles(a|em|owi) de Gaulle/Charles’$1 de Gaulle/gi;
 	$linia =~ s/`/’/g; # zmiana apostrofu
 	$linia =~ s/xie\b/ksie/g; # Foxie -> Foksie
 	$linia =~ s/Diksie/Dixie/g; # z powrotem
 	$linia =~ s/\[\[([^\]]+)x\]\]ie\b/[[$1x|$1ksie]]/g; # [[box]]ie -> [[box|boksie]] "
-	$linia =~ s/\[\[([^|]+)\|\1(a|e|u|ie|em)\]\]/[[$1]]$2/g; # [[boks|boksu]] -> [[boks]]u
 	$linia =~ s/(Burke|Duke|George|Mike|Pete|Shayne|Steve)((?:\]\])?)(a|owi)\b/$1$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(a|owi)\b/$1e$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(em|m)\b/$1e$2’em/g;
@@ -431,6 +431,8 @@ sub popraw_pisownie {
 	$linia =~ s/\bsmsy\b/SMS-y/g;
 	$linia =~ s/\b((MSZ|ONZ)(\]\])?)(-| -|- |'|’|`|–|—)(tu|u)/$1-etu/g;
 	$linia =~ s/\b((MSZ|ONZ)(\]\])?)(-| -|- |'|’|`|–|—)(cie)/$1-ecie/g;
+
+	$linia =~ s/\[\[([^|]+)\|\1(a|e|u|ie|em)\]\]/[[$1]]$2/g; # [[boks|boksu]] -> [[boks]]u
 	$linia =~ s/:\s*==/==/g;
 	
 	# pisownia, literówki, częste błędy
