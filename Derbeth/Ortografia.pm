@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.4;
+our $VERSION = 0.6.5;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -75,7 +75,7 @@ sub popraw_apostrofy1 {
 	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|u|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|ą|ę|a|i|e|y|mu|m)\b(?!-)/) {
 		my ($m1,$m2,$match,$before, $after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
-		"$PREMATCH$m1" !~ /(Barthes|Georges|Gilles|Yves)$/) {
+		"$PREMATCH$m1" !~ /(Barthes|Georges|Gilles|Jacques|Yves)$/) {
 			$match = "${m1}${m2}";
 		}
 		$after = popraw_apostrofy1($after);
@@ -430,10 +430,10 @@ sub popraw_pisownie {
 	$linia =~ s/(Barr|Dann|Gar|Gretzk|Harr|Perc|Perr|Terr|Timoth)y?((?:\]\])?)(ego|emu)\b/$1y$2’$3/g;
 
 	$linia =~ s/(Andrew|Matthew)('|’|`|-|–|—)?(a|em|ie|owi)/$1/g; # Andrew'a -> Andrew
-	$linia =~ s/Jacquesa\b/Jacques’a/g;
-	$linia =~ s/Charles(a|em|owi) de Gaulle/Charles’$1 de Gaulle/gi;
 	$linia =~ s/(François)('|’|`|-)?(a|em)\b/$1/g; # Françoisa -> François
-	$linia =~ s/(Barthes|Yves)(owi|em|a)\b/$1’$2/g;
+
+	$linia =~ s/Charles(a|em|owi) de Gaulle/Charles’$1 de Gaulle/gi;
+	$linia =~ s/(Barthes|Jacques|Yves)(owi|em|a)\b/$1’$2/g;
 	$linia =~ s/Yves('|’|`|-)?ie\b/Ywie/g;
 
 	$linia =~ s/Diksie/Dixie/g; # z powrotem
