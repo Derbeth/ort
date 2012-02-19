@@ -74,7 +74,8 @@ sub popraw_apostrofy1 {
 	my $linia = shift;
 	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|u|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|ą|ę|a|i|e|y|mu|m)\b(?!-)/) {
 		my ($m1,$m2,$match,$before, $after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
+		"$PREMATCH$m1" !~ /(Barthes|Yves)$/) {
 			$match = "${m1}${m2}";
 		}
 		$after = popraw_apostrofy1($after);
@@ -83,6 +84,7 @@ sub popraw_apostrofy1 {
 	return $linia;
 }
 
+# Laurie'mu -> Lauriemu
 sub popraw_apostrofy2 {
 	my $linia = shift;
 	if ($linia =~ /((ie)]?]?)(?:'|’|`|-|–|—)(go|mu|m)\b(?!-)/) {
@@ -96,6 +98,7 @@ sub popraw_apostrofy2 {
 	return $linia;
 }
 
+# Selby'ch -> Selbych
 sub popraw_apostrofy3 {
 	my $linia = shift;
 	if ($linia =~ /([y])(?:'|’|`|-|–|—)(ch)\b(?!-)/) {
@@ -416,16 +419,21 @@ sub popraw_pisownie {
 	$linia =~ s/y('|’|`|-|–|—)iego\b/y’ego/g; # Percy'iego -> Percy'ego
 	$linia =~ s/y('|’|`|-)m\b/ym/g; # Tony'm -> Tonym '
 	$linia = popraw_em($linia);
-	$linia =~ s/Jacquesa\b/Jacques’a/g;
-	$linia =~ s/Charles(a|em|owi) de Gaulle/Charles’$1 de Gaulle/gi;
 	$linia =~ s/`/’/g; # zmiana apostrofu
 	$linia =~ s/xie\b/ksie/g; # Foxie -> Foksie
-	$linia =~ s/Diksie/Dixie/g; # z powrotem
 	$linia =~ s/\[\[([^\]]+)x\]\]ie\b/[[$1x|$1ksie]]/g; # [[box]]ie -> [[box|boksie]] "
-	$linia =~ s/(Burke|Duke|George|Mike|Pete|Shayne|Steve)((?:\]\])?)(a|owi)\b/$1$2’$3/g;
+	$linia =~ s/(Burke|Duke|George|Luke|Mike|Pete|Shayne|Spike|Steve)((?:\]\])?)(a|owi)\b/$1$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(a|owi)\b/$1e$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(em|m)\b/$1e$2’em/g;
 	$linia =~ s/(Barr|Dann|Gar|Gretzk|Harr|Perc|Perr|Terr|Timoth)y?((?:\]\])?)(ego|emu)\b/$1y$2’$3/g;
+
+	$linia =~ s/Jacquesa\b/Jacques’a/g;
+	$linia =~ s/Charles(a|em|owi) de Gaulle/Charles’$1 de Gaulle/gi;
+	$linia =~ s/(François)('|’|`|-)?(a|em)\b/$1/g; # Françoisa -> François
+	$linia =~ s/(Barthes|Yves)(owi|em|a)\b/$1’$2/g;
+	$linia =~ s/Yves('|’|`|-)?ie\b/Ywie/g;
+
+	$linia =~ s/Diksie/Dixie/g; # z powrotem
 	$linia =~ s/(WiF|TD|HD|HiF)-i/$1i/g;   # z powrotem
 	
 	$linia =~ s/\bsmsy\b/SMS-y/g;
