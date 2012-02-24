@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.5;
+our $VERSION = 0.6.6;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -409,6 +409,7 @@ sub popraw_pisownie {
 	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
 	$linia =~ s/(Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(i)\b/$1i/g;   # remake'i -> remaki
 	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
+	$linia =~ s/\b(Metall|Galact)ici\b/$1iki/g; # Metallici -> Metalliki
 	$linia =~ s/\B(ell)i(?:'|’|`|-)?(ego|emu)\b/$1$2/g; # Botticelliemu -> Botticellemu http://so.pwn.pl/zasady.php?id=629632
 	$linia =~ s/\[\[([^\]|]+ell)i\]\](?:'|’|`|-)?(ego|emu)\b/[[$1i|$1$2]]/g; # [[Sandro Botticelli]]ego
 
@@ -422,8 +423,10 @@ sub popraw_pisownie {
 	$linia =~ s/y('|’|`|-)m\b/ym/g; # Tony'm -> Tonym '
 	$linia = popraw_em($linia);
 	$linia =~ s/`/’/g; # zmiana apostrofu
-	$linia =~ s/xie\b/ksie/g; # Foxie -> Foksie
-	$linia =~ s/\[\[([^\]]+)x\]\]ie\b/[[$1x|$1ksie]]/g; # [[box]]ie -> [[box|boksie]] "
+	if ($ryzykowne) {
+		$linia =~ s/xie\b/ksie/g; # Foxie -> Foksie
+		$linia =~ s/\[\[([^\]]+)x\]\]ie\b/[[$1x|$1ksie]]/g; # [[box]]ie -> [[box|boksie]] "
+	}
 	$linia =~ s/(Burke|Duke|George|Luke|Mike|Pete|Shayne|Spike|Steve)((?:\]\])?)(a|owi)\b/$1$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(a|owi)\b/$1e$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(em|m)\b/$1e$2’em/g;
