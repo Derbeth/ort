@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.6;
+our $VERSION = 0.6.7;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -72,9 +72,10 @@ sub popraw_apostrofy {
 
 sub popraw_apostrofy1 {
 	my $linia = shift;
-	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|u|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|ą|ę|a|i|e|y|mu|m)\b(?!-)/) {
+	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|u|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|ą|ę|a|i|e|y|mu|m)\b/) {
 		my ($m1,$m2,$match,$before, $after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
+		if (($ryzykowne || $after !~ /^-/) && # Jay'a-Z
+		$PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
 		"$PREMATCH$m1" !~ /(Barthes|Georges|Gilles|Jacques|Yves)$/) {
 			$match = "${m1}${m2}";
 		}
@@ -424,6 +425,7 @@ sub popraw_pisownie {
 	$linia = popraw_em($linia);
 	$linia =~ s/`/’/g; # zmiana apostrofu
 	if ($ryzykowne) {
+		$linia =~ s/\Bt'cie/cie/g; # Kurt'cie -> Kurcie
 		$linia =~ s/xie\b/ksie/g; # Foxie -> Foksie
 		$linia =~ s/\[\[([^\]]+)x\]\]ie\b/[[$1x|$1ksie]]/g; # [[box]]ie -> [[box|boksie]] "
 	}
