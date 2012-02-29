@@ -187,14 +187,8 @@ print '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.o
 <?php echo $input; ?>
 </textarea>
 </fieldset>
-<fieldset>
-<legend>Tekst wyjściowy</legend>
-<textarea id="output" name="output" cols="120" rows="13">
-<?php echo $output; ?>
-</textarea>
-</fieldset>
-<p><input type="submit"/>
-<input type="submit" name="diff" value="Pokaż różnice"/>
+<p><input type="submit" value="Popraw" accesskey="s"/>
+<input type="submit" name="diff" value="Pokaż różnice" accesskey="v"/>
 <label>Interpunkcja<input type="checkbox" name="interp" value="1" <?php toChkd($interp); ?>/></label>
 <label>Typografia<input type="checkbox" name="typogr" value="1" <?php toChkd($typogr); ?>/></label>
 <label>Usuwanie <abbr title="wielokrotnych">wielokr.</abbr> &lt;br>
@@ -205,11 +199,21 @@ print '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.o
 <label>Pozostałe ryzykowne
 <input type="checkbox" name="ryzykowne" value="1" <?php toChkd($ryzykowne); ?>/></label>
 </p>
+<fieldset>
+<legend>Tekst wyjściowy</legend>
+<textarea id="output" name="output" cols="120" rows="13">
+<?php echo $output; ?>
+</textarea>
+</fieldset>
 </form>
 <?php if ($output) { ?>
 	<script type="text/javascript">
 document.getElementById('output').focus();
 document.getElementById('output').select();
+	</script>
+<?php } else { ?>
+	<script type="text/javascript">
+document.getElementById('input').focus();
 	</script>
 <?php } ?>
 <hr/>
