@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.7;
+our $VERSION = 0.6.8;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -72,7 +72,7 @@ sub popraw_apostrofy {
 
 sub popraw_apostrofy1 {
 	my $linia = shift;
-	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|u|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|ą|ę|a|i|e|y|mu|m)\b/) {
+	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|ą|ę|a|i|e|y|mu|m|u)\b/) {
 		my ($m1,$m2,$match,$before, $after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $after !~ /^-/) && # Jay'a-Z
 		$PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
@@ -80,7 +80,7 @@ sub popraw_apostrofy1 {
 			$match = "${m1}${m2}";
 		}
 		$after = popraw_apostrofy1($after);
-		$linia = $before.$match.$after;			
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -94,7 +94,7 @@ sub popraw_apostrofy2 {
 			$match = "${m1}${m3}";
 		}
 		$after = popraw_apostrofy2($after);
-		$linia = $before.$match.$after;			
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -108,7 +108,7 @@ sub popraw_apostrofy3 {
 			$match = "${m1}${m2}";
 		}
 		$after = popraw_apostrofy3($after);
-		$linia = $before.$match.$after;			
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -116,14 +116,14 @@ sub popraw_apostrofy3 {
 sub popraw_skrotowce {
 	my $linia = shift;
 	if ($linia =~ /([a-zA-ZłśżŁŚŻ][A-ZŁŚŻ])(\]\])?('|’|`|- | -|–|—)?(ach|ami|zie|ów|ka|etu|ecie|ocie|otu|owych|owym|owy|owi|owa|owe|ką|kę|(?:(?:ow)?(?:skie|skich|skim|ski|ską))|iem|em|om|ie|i|a|e|ę|u|y)\b(?![a-zćłńóśźż])/) {
-		my ($m1,$m2,$m4,$match,$before, $after) = ($1,$2,$4,$MATCH,$PREMATCH,$POSTMATCH);
-		$m2 = '' unless($m2);
-		if (($ryzykowne || $m2)
+		my ($m1,$m2,$m3,$m4,$match,$before, $after) = ($1,$2,$3,$4,$MATCH,$PREMATCH,$POSTMATCH);
+		$m2 ||= '';
+		if (($ryzykowne || $m3)
 		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && $match !~ /kPa|kDa|\bI[a-z]\b/) {
 			$match = "$m1$m2-$m4"; # LOTu -> LOT-u
 		}
 		$after = popraw_skrotowce($after);
-		$linia = $before.$match.$after;			
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -145,7 +145,7 @@ sub popraw_porzadkowe {
 			}
 		}
 		$after = popraw_porzadkowe($after);
-		$linia = $before.$match.$after;	
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -158,7 +158,7 @@ sub popraw_em {
 			$match = "$1e$2em"; # Steve'm -> Steve'em
 		}
 		$after = popraw_em($after);
-		$linia = $before.$match.$after;	
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -421,7 +421,7 @@ sub popraw_pisownie {
 	$linia =~ s/(oe)((?:\]\])?)('|’|`|-)(go|m)\b/$1$2$4/g; # Joe'go -> Joego
 	$linia =~ s/\Be('|’|`)go\b/ego/g; # Mecke'go -> Meckego
 	$linia =~ s/y('|’|`|-|–|—)iego\b/y’ego/g; # Percy'iego -> Percy'ego
-	$linia =~ s/y('|’|`|-)m\b/ym/g; # Tony'm -> Tonym '
+	$linia =~ s/y((?:\]\])?)('|’|`|-)m\b/y$1m/g; # Tony'm -> Tonym '
 	$linia = popraw_em($linia);
 	$linia =~ s/`/’/g; # zmiana apostrofu
 	if ($ryzykowne) {
@@ -453,9 +453,9 @@ sub popraw_pisownie {
 	
 	# pisownia, literówki, częste błędy
 	$linia =~ s/(bieżni|elektrowni|głębi|jaskini|Korei|powierzchni|pustyni|skoczni|skrobi|uczelni|ziemi)i/$1/gi; # "Koreii", "ziemii" itp.
-	$linia =~ s/\b(Austri|Australi|Algieri|amfibi|Armeni|Belgi|[bB]ibli|Brytani|Bułgari|Cynthi|Estoni|Etiopi|Finlandi|Grenlandi|Hiszpani|Holandi|Irlandi|Islandi|Japoni|Jugosławi|laryngologi|lini|Mołdawi|Mongoli|Norwegi|opini|Portugali|Serbi|Słoweni|stomatologi|Szwajcari|Tajlandi|Virgini|Zelandi)\b/$1i/g; # Japoni -> Japonii
+	$linia =~ s/\b(Austri|Australi|Algieri|amfibi|Armeni|Belgi|[bB]ibli|Brazyli|Brytani|Bułgari|Cynthi|Estoni|Etiopi|Finlandi|Grenlandi|Hiszpani|Holandi|Irlandi|Islandi|Japoni|Jordani|Jugosławi|laryngologi|lini|Mołdawi|Mongoli|Nigeri|Norwegi|opini|Portugali|Serbi|Słoweni|stomatologi|Szwajcari|Tajlandi|Virgini|Zelandi)\b/$1i/g; # Japoni -> Japonii
 	$linia =~ s/\b(ale|knie|kole|mierze|nadzie|Okrze|ru|szy|Zia)ji\b/$1i/gi; # szyji -> szyi
-	$linia =~ s/(anarchi|buddy|fanaty|faszy|femini|judai|komuni|marksi|masochi|mechani|mesjani|nazi|nihili|oportuni|optymi|organi|pesymi|platoni|pozytywi|protestanty|radykali|romanty|sady|socjali|syndykali|totalitary|trocki)źmie/${1}zmie/gi; # komuniźmie -> komunizmie
+	$linia =~ s/(anarchi|buddy|fanaty|faszy|femini|judai|kapitali|komuni|marksi|masochi|mechani|mesjani|nazi|nihili|oportuni|optymi|organi|pesymi|platoni|pozytywi|protestanty|radykali|romanty|sady|socjali|syndykali|totalitary|trocki)źmie/${1}zmie/gi; # komuniźmie -> komunizmie
 	
 	$linia =~ s/\bz pośród\b/spośród/g;
 	$linia =~ s/\bZ pośród\b/Spośród/g;
