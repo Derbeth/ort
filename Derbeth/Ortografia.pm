@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.8;
+our $VERSION = 0.6.9;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -337,7 +337,7 @@ sub popraw_pisownie {
 	my $JEDNOSTKI = '((?:mega|kilo|deka|centy)?(?:bajtow|gramow|hercow|metrow)|barwn|biegow|bitow|bramkow|calow|cylindrow|cyfrow|częściow|dekadow|dniow|dolarow|dzieln|dzienn|etapow|fazow|funtow|godzinn|groszow|gwiazdkow|hektarow|kanałow|kątn|klasow|klawiszow|kołow|kondygnacyjn|konn|krotn|lec|letn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|silnikow|spadow|stopniow|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|wartościow|watow|wieczn|woltow|wymiarow|zaworow|zębow)(ia|ie|iu|ią|iej|ych|ymi|ym|ego|emu|ej|[aeyią])|lat(ek|kami|ka|kiem|ki|ku|ków)';
 	my $LICZEBNIKI = '';
 	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)($JEDNOSTKI)\b/$1-$2/og; # 32 bitowy -> 32-bitowy
-	$linia =~ s/\b([jJ]edno|[dD]wu|[tT]rój|[tT]rzy|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto|[sS]tu|[wW]ielo)(?: | - |[-–—] | [-–—]|\. |–|—|-)($JEDNOSTKI)\b/$1$2/og; # sześcio tonowy -> sześciotonowy
+	$linia =~ s/\b([jJ]edno|[dD]wu|[tT]rój|[tT]rzy|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[pP]ółtora|[tT]rzydziesto|[sS]tu|[wW]ielo)(?: | - |[-–—] | [-–—]|\. |–|—|-)($JEDNOSTKI)\b/$1$2/og; # sześcio tonowy -> sześciotonowy
 	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto) i pół ($JEDNOSTKI)/$1ipół$2/og; # http://so.pwn.pl/zasady.php?id=629465
 	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto)((?:, | ))/$1-$2/og;
 	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto)-(lub)/$1- $2/og; # trzy-lub czterokołowy
@@ -455,7 +455,7 @@ sub popraw_pisownie {
 	$linia =~ s/(bieżni|elektrowni|głębi|jaskini|Korei|powierzchni|pustyni|skoczni|skrobi|uczelni|ziemi)i/$1/gi; # "Koreii", "ziemii" itp.
 	$linia =~ s/\b(Austri|Australi|Algieri|amfibi|Armeni|Belgi|[bB]ibli|Brazyli|Brytani|Bułgari|Cynthi|Estoni|Etiopi|Finlandi|Grenlandi|Hiszpani|Holandi|Irlandi|Islandi|Japoni|Jordani|Jugosławi|laryngologi|lini|Mołdawi|Mongoli|Nigeri|Norwegi|opini|Portugali|Serbi|Słoweni|stomatologi|Szwajcari|Tajlandi|Virgini|Zelandi)\b/$1i/g; # Japoni -> Japonii
 	$linia =~ s/\b(ale|knie|kole|mierze|nadzie|Okrze|ru|szy|Zia)ji\b/$1i/gi; # szyji -> szyi
-	$linia =~ s/(anarchi|buddy|fanaty|faszy|femini|judai|kapitali|komuni|marksi|masochi|mechani|mesjani|nazi|nihili|oportuni|optymi|organi|pesymi|platoni|pozytywi|protestanty|radykali|romanty|sady|socjali|syndykali|totalitary|trocki)źmie/${1}zmie/gi; # komuniźmie -> komunizmie
+	$linia =~ s/(analfabety|anarchi|buddy|fanaty|faszy|femini|judai|kapitali|katechi|komuni|marksi|masochi|mechani|mesjani|nazi|nihili|oportuni|optymi|organi|pesymi|platoni|pozytywi|protestanty|radykali|romanty|sady|socjali|syndykali|totalitary|trocki)źmie/${1}zmie/gi; # komuniźmie -> komunizmie
 	
 	$linia =~ s/\bz pośród\b/spośród/g;
 	$linia =~ s/\bZ pośród\b/Spośród/g;
@@ -528,6 +528,7 @@ sub popraw_pisownie {
 	$linia =~ s/\b(D|d)uz(o|y|a|e|ych|ą)\b/$1uż$2/g;
 	$linia =~ s/\b(F|f)ir(nam|man)en(tem|tu|cie|t)\b/$1irmamen$3/g;
 	$linia =~ s/\bfrancuzk(iego|imi|im|ich|iej|ie|a|i|ą)/francusk$1/g;
+	$linia =~ s/\b(ł|Ł)abądź\b/$1abędź/g;
 	$linia =~ s/\b(G|g)dyz\b/$1dyż/g;
 	$linia =~ s/\b(G|g)łown(a|e|i|ych|ymi|y|ą)\b/$1łówn$2/g;
 	$linia =~ s/\bgodź\. /godz. /g;
@@ -573,7 +574,7 @@ sub popraw_pisownie {
 	}
 	if ($linia =~ /\b(V ?- ?ce|Vice|Wice)[ -]?(\w)/ && $' !~ /^(ity|ersa)\b/) { # "V-ce"
 		if ($linia =~ s/\b(V ?- ?ce|Vice|Wice)[ -]?(\w)/Wice\l$2/g) {
-			$linia =~ s/Wicent(e?)/Vicent$1/g;
+			$linia =~ s/W(icente?|icenz)/V$1/g; # cofamy: Vincente, Vicenza
 		}
 	}
 	
