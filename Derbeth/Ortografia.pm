@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.9;
+our $VERSION = 0.6.10;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -152,10 +152,11 @@ sub popraw_porzadkowe {
 
 sub popraw_em {
 	my $linia = shift;
-	if ($linia =~ /(b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z)e('|’|`|-|–|—)m\b/) {
-		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
+	if ($linia =~ /(b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z)e(\]\])?('|’|`|-|–|—)m\b/) {
+		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
+		$m2 ||= '';
 		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
-			$match = "$1e$2em"; # Steve'm -> Steve'em
+			$match = "${m1}e${m2}${m3}em"; # Steve'm -> Steve'em
 		}
 		$after = popraw_em($after);
 		$linia = $before.$match.$after;
@@ -186,7 +187,7 @@ sub popraw_liczebniki2 {
 		return $linia;
 	}
 	
-	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(miu|toma|cioma|ciu|wu|stu|ech|tu|óch|ch|u)\b/) {
+	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(miu|toma|cioma|ciu|wu|stu|rech|ech|tu|óch|ch|u)\b/) {
 		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $2)
 		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
