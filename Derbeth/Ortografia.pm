@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.10;
+our $VERSION = 0.6.11;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -492,7 +492,7 @@ sub popraw_pisownie {
 	$linia =~ s/\b(Na|na)razie\b/$1 razie/g;
 	$linia =~ s/\b(Od|od)razu\b/$1 razu/g;
 	$linia =~ s/\b(Na|na) codzień\b/$1 co dzień/g;
-	$linia =~ s/\b(Co|co) dzienn(ych|y|ie|e|a)\b/$1dzienn$1/g;
+	$linia =~ s/\b(Co|co) dzienn(ych|ymi|ym|ie|ej|e|y|a|ą)\b/$1dzienn$2/g;
 	$linia =~ s/\b(Na|na) prawdę\b/$1prawdę/g;
 	$linia =~ s/\b(Na|na) przeciwko\b/$1przeciwko/g;
 	$linia =~ s/\b(Do|do) okoła\b/$1okoła/g;
