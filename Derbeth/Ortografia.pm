@@ -152,7 +152,7 @@ sub popraw_porzadkowe {
 
 sub popraw_porzadkowe2 {
 	my $linia = shift;
-	$linia =~ s/(lat\w* \d+) ?– ?(tych|tymi|te)/$1./g;
+	$linia =~ s/(lat\w* \d+)( ?– ?| )(tych|tymi|te)/$1./g;
 	return $linia;
 }
 
