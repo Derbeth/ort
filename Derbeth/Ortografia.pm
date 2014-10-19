@@ -170,7 +170,7 @@ sub popraw_liczebniki1 {
 		return $linia;
 	}
 	
-	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(cio|ro|sto|to|mio|o) /) {
+	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(nasto|cio|ro|sto|to|mio|o) /) {
 		my ($m1,$match,$before,$after) = ($1,$MATCH,$PREMATCH,$POSTMATCH);
 		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$1-"; # 5-cio osobowy -> 5-osobowy, XIX-sto wieczny -> XIX-wieczny
@@ -542,6 +542,7 @@ sub popraw_pisownie {
 	$linia =~ s/\bmo[zż]naby\b/można by/g;
 	$linia =~ s/\b(N|n)astepn(ego|ej|ych|a|e|y|i|ą)\b/$1astępn$2/g;
 	$linia =~ s/\b(O|o)procz\b/$1prócz/g;
+	$linia =~ s/\bzaden\b/żaden/g;
 	$linia =~ s/\b(O|o)rgina(łu|łów|ły|łem|łami|ł|lni|lnych|lny|lna|lnej|lnego|lnymi|lnym|lną|lne)\b/$1rygina$2/g;
 	$linia =~ s/\b(P|p)iersz(ymi|ym|ych|ej|ego|a|y|e|ą)\b/$1ierwsz$2/g;
 	$linia =~ s/\b(P|p)ojecie\b/$1ojęcie/g;
