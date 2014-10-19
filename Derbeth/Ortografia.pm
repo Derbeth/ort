@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.11;
+our $VERSION = 0.6.12;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -147,6 +147,12 @@ sub popraw_porzadkowe {
 		$after = popraw_porzadkowe($after);
 		$linia = $before.$match.$after;
 	}
+	return $linia;
+}
+
+sub popraw_porzadkowe2 {
+	my $linia = shift;
+	$linia =~ s/(lat\w* \d+) ?– ?(tych|tymi|te)/$1./g;
 	return $linia;
 }
 
@@ -304,6 +310,7 @@ sub popraw_pisownie {
 	
 	# poprawa pisowni liczb: 10-te -> 10.
 	$linia = popraw_porzadkowe($linia);
+	$linia = popraw_porzadkowe2($linia);
 	
 	if ($rzymskie_niebezp) {
 		my ($done, $todo) = ('', $linia);  # nie ma kropki po rzymskich licz. porz. XX. -> XX <- niebezpieczne
