@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.12;
+our $VERSION = 0.6.13;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -414,7 +414,7 @@ sub popraw_pisownie {
 	$linia =~ s/\B(oy|ey)('|’|`|-|–|—)e?go\b/$1’a/g;
 	
 	$linia = popraw_apostrofy($linia);
-	$linia =~ s/(Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(em|m)\b/$1iem/g; # Mike'm -> Mikiem
+	$linia =~ s/(Jak|Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(iem|em|m)\b/$1iem/g; # Mike'm -> Mikiem
 	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
 	$linia =~ s/(Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(i)\b/$1i/g;   # remake'i -> remaki
 	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
