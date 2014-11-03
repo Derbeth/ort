@@ -9,7 +9,7 @@ my $TEST_TEMP_DIR = '/tmp/ort-test';
 `mkdir $TEST_TEMP_DIR`;
 
 my $tests=-1;
-for (my $i=0 ; ; ++$i) {
+for (my $i=$ARGV[0] || 0 ; ; ++$i) {
 	my $test_input = "$TESTDATA_DIR/in${i}.txt";
 	my $test_output = "$TEST_TEMP_DIR/out${i}.txt";
 	my $test_expected = "$TESTDATA_DIR/out${i}.txt";
