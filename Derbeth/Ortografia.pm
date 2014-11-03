@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.13;
+our $VERSION = 0.6.14;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -152,7 +152,7 @@ sub popraw_porzadkowe {
 
 sub popraw_porzadkowe2 {
 	my $linia = shift;
-	$linia =~ s/(lat\w* \d+)( ?– ?| )(tych|tymi|te)/$1./g;
+	$linia =~ s/(lat\w* \d+)( ?– ?| )(tych|tymi|te)\b/$1./g;
 	return $linia;
 }
 
@@ -347,7 +347,8 @@ sub popraw_pisownie {
 	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)($JEDNOSTKI)\b/$1-$2/og; # 32 bitowy -> 32-bitowy
 	$linia =~ s/\b([jJ]edno|[dD]wu|[tT]rój|[tT]rzy|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[pP]ółtora|[tT]rzydziesto|[sS]tu|[wW]ielo)(?: | - |[-–—] | [-–—]|\. |–|—|-)($JEDNOSTKI)\b/$1$2/og; # sześcio tonowy -> sześciotonowy
 	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto) i pół ($JEDNOSTKI)/$1ipół$2/og; # http://so.pwn.pl/zasady.php?id=629465
-	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto)((?:, | ))/$1-$2/og;
+	$linia =~ s/\b([cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto)((?:, | ))/$1-$2/og;
+	$linia =~ s/\b[dD]wu((?:, | ))/$1-$2/og if $ryzykowne;
 	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto)-(lub)/$1- $2/og; # trzy-lub czterokołowy
 
 	$linia =~ s/(lat(ach|a)?) '(\d\d)/$1 $3./g; # lat '80 -> lat 80.
@@ -522,41 +523,25 @@ sub popraw_pisownie {
 	$linia =~ s/\b(N|n)ie dług(o|i)\b/$1iedług$2/g;
 	$linia =~ s/\b(P|p)oprostu\b/$1o prostu/g;
 	
-	$linia =~ s/\b(imi|książ|mas|par|plemi|zwierz)e\b/$1ę/g;
 	$linia =~ s/\btą (mapę|jaskinię)\b/tę $1/g;
-	
+	$linia =~ s/\bbieże\b/bierze/g;
 	$linia =~ s/\b(a|A)bsorbcj(a|i|ą)\b/$1bsorpcj$2/g;
 	$linia =~ s/\b(b|B)ierząc(ej|ych|ego|ym|o|y|a)\b/$1ieżąc$2/g;
-	$linia =~ s/\bbieże\b/bierze/g;
-	$linia =~ s/\b(B|b)yc\b/$1yć/g;
-	$linia =~ s/\b(B|b)yl\b/$1ył/g;
 	$linia =~ s/\b(C|c)jan(ku|ek|owodór|owodoru)\b/$1yjan$2/g;
-	$linia =~ s/\b(C|c)zest(ych|ymi|o|y|ą|a|e)\b/$1zęst$2/g;
-	$linia =~ s/\b(D|d)osc\b/$1ość/g;
-	$linia =~ s/\b(D|d)uz(o|y|a|e|ych|ą)\b/$1uż$2/g;
 	$linia =~ s/\b(F|f)ir(nam|man)en(tem|tu|cie|t)\b/$1irmamen$3/g;
 	$linia =~ s/\bfrancuzk(iego|imi|im|ich|iej|ie|a|i|ą)/francusk$1/g;
 	$linia =~ s/\b(ł|Ł)abądź\b/$1abędź/g;
-	$linia =~ s/\b(G|g)dyz\b/$1dyż/g;
 	$linia =~ s/\b(G|g)łown(a|e|i|ych|ymi|y|ą)\b/$1łówn$2/g;
 	$linia =~ s/\bgodź\. /godz. /g;
-	$linia =~ s/\bjak(a|i|ie)s\b/jak$1ś/g;
-	$linia =~ s/\bktor(zy|ego|ych|ymi|ym|a|ą|y)\b/któr$1/g;
 	$linia =~ s/\bludzią\b/ludziom/g;
 	$linia =~ s/\błać\./łac./g;
 	$linia =~ s/\bmln\. ([a-ząćęłńóśżź])/mln $1/g; # 100 mln. dolarów -> 100 mln dolarów
-	$linia =~ s/\bmoze\b/może/g;
 	$linia =~ s/\bmo[zż]naby\b/można by/g;
-	$linia =~ s/\b(N|n)astepn(ego|ej|ych|a|e|y|i|ą)\b/$1astępn$2/g;
-	$linia =~ s/\b(O|o)procz\b/$1prócz/g;
-	$linia =~ s/\bzaden\b/żaden/g;
 	$linia =~ s/\b(O|o)rgina(łu|łów|ły|łem|łami|ł|lni|lnych|lny|lna|lnej|lnego|lnymi|lnym|lną|lne)\b/$1rygina$2/g;
 	$linia =~ s/\b(P|p)iersz(ymi|ym|ych|ej|ego|a|y|e|ą)\b/$1ierwsz$2/g;
-	$linia =~ s/\b(P|p)ojecie\b/$1ojęcie/g;
 	$linia =~ s/\b(p|P)ojedyńcz(ego|ymi|ym|ych|ej|e|y|ą|a|o)\b/$1ojedyncz$2/g;
 	$linia =~ s/\b(p|P)ożąd(ek|ku|kiem|kowy)\b/$1orząd$2/g;
 	$linia =~ s/\b(P|p)zrez\b/$1rzez/g;
-	$linia =~ s/\b(P|p)rzyklad\b/$1rzykład/g;
 	$linia =~ s/\b(R|r)ownie(ż|z)\b/$1ównież/g;
 	$linia =~ s/\bsciśle\b/ściśle/g;
 	$linia =~ s/\b(S|s)pógłos(ce|ek|kom|kami|kach|ka|ki)\b/$1półgłos$2/g;
@@ -564,9 +549,6 @@ sub popraw_pisownie {
 	$linia =~ s/\btranzakcj(a|i|om|ę|ami|ach|e)/transakcj$1/g;
 	$linia =~ s/\btyś\. /tys. /g;
 	$linia =~ s/\bwach(ać|ało|ał|a)\b/wah$1/g;
-	$linia =~ s/\b(W|w)iecej\b/$1ięcej/g;
-	$linia =~ s/\b(W|w)iedze\b/$1iedzę/g;
-	$linia =~ s/\b(W|w)ieksz(ych|a|y|e)\b/$1iększ$2/g;
 	$linia =~ s/\b(W|w)i[eę]kszo(sc|sć|ść|śc)\b/$1iększość/g;
 	$linia =~ s/\bwłaść\./właśc./g;
 	$linia =~ s/\b(?:wziąść|wziąźć)\b/wziąć/g;
@@ -577,7 +559,29 @@ sub popraw_pisownie {
 	$linia =~ s/\b(Z|z)wiaz(ek|ku|kiem)\b/$1wiąz$2/g;
 	$linia =~ s/\b([Zz])wycięsc(a|ów)\b/$1wycięzc$2/g;
 	$linia =~ s/\bżadko\b/rzadko/g;
-	
+
+	# brak polskich liter
+	if ($ryzykowne || $linia !~ /\bhttp:\/\//) {
+		$linia =~ s/\b(imi|książ|mas|par|plemi|zwierz)e\b/$1ę/g;
+		$linia =~ s/\b(B|b)yc\b/$1yć/g;
+		$linia =~ s/\b(B|b)yl\b/$1ył/g;
+		$linia =~ s/\b(C|c)zest(ych|ymi|o|y|ą|a|e)\b/$1zęst$2/g;
+		$linia =~ s/\b(D|d)osc\b/$1ość/g;
+		$linia =~ s/\b(D|d)uz(o|y|a|e|ych|ą)\b/$1uż$2/g;
+		$linia =~ s/\b(G|g)dyz\b/$1dyż/g;
+		$linia =~ s/\bjak(a|i|ie)s\b/jak$1ś/g;
+		$linia =~ s/\bktor(zy|ego|ych|ymi|ym|a|ą|y)\b/któr$1/g;
+		$linia =~ s/\bmoze\b/może/g;
+		$linia =~ s/\b(N|n)astepn(ego|ej|ych|a|e|y|i|ą)\b/$1astępn$2/g;
+		$linia =~ s/\b(O|o)procz\b/$1prócz/g;
+		$linia =~ s/\bzaden\b/żaden/g;
+		$linia =~ s/\b(P|p)ojecie\b/$1ojęcie/g;
+		$linia =~ s/\b(P|p)rzyklad\b/$1rzykład/g;
+		$linia =~ s/\b(W|w)iecej\b/$1ięcej/g;
+		$linia =~ s/\b(W|w)iedze\b/$1iedzę/g;
+		$linia =~ s/\b(W|w)ieksz(ych|a|y|e)\b/$1iększ$2/g;
+	}
+
 	if ($linia =~ s/\b(v ?- ?ce|vice|wice)[ -]?(\w)/wice\l$2/g) { # "v-ce"
 		$linia =~ s/\bwice([vV]ersa|[cC]ity)\b/vice $1/g;
 	}
