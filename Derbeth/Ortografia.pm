@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.16;
+our $VERSION = 0.6.17;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -176,7 +176,10 @@ sub popraw_liczebniki1 {
 		return $linia;
 	}
 	
-	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(nasto|cio|ro|sto|to|mio|o) /) {
+	my $separator = $ryzykowne ?
+		"( ?[-–—] ?)?" :
+		"( ?- ?|[–—])?";
+	if ($linia =~ /(\d|\b[XIV]+\b)$separator(nasto|cio|ro|sto|to|mio|o) /o) {
 		my ($m1,$match,$before,$after) = ($1,$MATCH,$PREMATCH,$POSTMATCH);
 		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$1-"; # 5-cio osobowy -> 5-osobowy, XIX-sto wieczny -> XIX-wieczny
@@ -342,7 +345,7 @@ sub popraw_pisownie {
 	$linia = popraw_liczebniki($linia);
 	$linia =~ s/\b1(?:-|–|—)wszo /pierwszo/g;
 
-	my $JEDNOSTKI = '((?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajtow|gramow|hercow|metrow)|barwn|biegow|bitow|bramkow|calow|cylindrow|cyfrow|częściow|dekadow|dniow|dolarow|dzieln|dzienn|etapow|fazow|funtow|galonow|godzinn|groszow|gwiazdkow|hektarow|jardow|kanałow|karatow|kątn|klasow|klawiszow|kołow|kondygnacyjn|konn|krotn|lec|letn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|watow|wieczn|woltow|wymiarow|zaworow|zębow)(ia|ie|iu|ią|iej|ych|ymi|ym|ego|emu|ej|[aeyią])|lat(ek|kami|ka|kiem|ki|ku|ków)';
+	my $JEDNOSTKI = '((?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajtow|gramow|hercow|metrow)|barwn|biegow|bitow|bramkow|calow|cylindrow|cyfrow|częściow|dekadow|dniow|dolarow|dzieln|dzienn|elementow|etapow|fazow|funtow|galonow|godzinn|groszow|gwiazdkow|hektarow|jardow|kanałow|karatow|kątn|klasow|klawiszow|kołow|kondygnacyjn|konn|krotn|lec|letn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|watow|wieczn|woltow|wymiarow|zaworow|zdaniow|zębow)(ia|ie|iu|ią|iej|ych|ymi|ym|ego|emu|ej|[aeyią])|lat(ek|kami|ka|kiem|ki|ku|ków)';
 	my $LICZEBNIKI = '';
 	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)($JEDNOSTKI)\b/$1-\L$2/ogi; # 32 bitowy -> 32-bitowy
 	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)(\[\[)((?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajt|bit|herc|metr)|cal|dolar|funt|galon|hektar|jard|karat|wat|wolt)(\]\]ow(ego|emu|ych|ymi|ym|ą|e|a|y))\b/$1-$2\L$3$4/gi;
