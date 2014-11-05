@@ -2,6 +2,12 @@
 
 use strict;
 
+use Getopt::Long;
+
+my $interactive=1; # run kdiff3
+
+GetOptions('i|interactive!'=> \$interactive) or die;
+
 my $TESTDATA_DIR = 'testdata';
 my $TEST_TEMP_DIR = '/tmp/ort-test';
 
@@ -22,7 +28,8 @@ for (my $i=$ARGV[0] || 0 ; ; ++$i) {
 	my $equal = &compare_files($test_output, $test_expected);
 	if (!$equal) {
 		print "Test no. $i failed.\n";
-		`kdiff3 $test_output $test_expected`;
+		my $diff_program = $interactive ? 'kdiff3' : 'diff --unified=2';
+		system("$diff_program $test_output $test_expected");
 		exit(11);
 	}
 
