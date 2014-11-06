@@ -351,12 +351,15 @@ sub popraw_pisownie {
 		.'|letn(ia|iej|ie|ią|ich|imi|im|i)'
 		."|((?:$LINK_JEDNOSTKI)ow|barwn|biegow|bramkow|cylindrow|cyfrow|częściow|dekadow|dniow|drzwiow|dzieln|dzienn|elementow|etapow|fazow|godzinn|groszow|gwiazdkow|kanałow|kątn|klasow|klawiszow|kołow|komorow|kondygnacyjn|konn|krotn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|siedzeniow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|wieczn|wymiarow|zaworow|zdaniow|zębow|złotow)"
 			."(ych|ymi|ym|ego|emu|ej|[aeyią])";
+	my $BEZP_PODST_LICZEBNIKI = 'dwu|cztero|pięcio|sześcio|siedmio|ośmio|dziewięcio|dziesięcio';
+	my $NIEBEZP_PODST_LICZEBNIKI = 'jedno|trój|trzy';
+	my $PODST_LICZEBNIKI = "$BEZP_PODST_LICZEBNIKI|$NIEBEZP_PODST_LICZEBNIKI";
 	# bez 'trzy' - zbyt duże ryzyko pomylenia z liczebnikiem głównym 'trzy'
-	my $BEZP_LICZEBNIKI = 'dwu|cztero|pięcio|sześcio|siedmio|ośmio|dziewięcio|dziesięcio'
+	my $BEZP_LICZEBNIKI = $BEZP_PODST_LICZEBNIKI
 		.'|jedenasto|dwunasto|trzynasto|czternasto|piętnasto|szesnasto|siedemnasto|osiemnasto|dziewiętnasto'
-		.'|dwudziesto|trzydziesto|czterdziesto|pięćdziesięcio';
+		."|(?:dwudziesto|trzydziesto|czterdziesto|pięćdziesięcio)(?:$PODST_LICZEBNIKI)?";
 	my $LICZEBNIKI = $BEZP_LICZEBNIKI
-		.'|jedno|trój|trzy'
+		.'|'.$NIEBEZP_PODST_LICZEBNIKI
 		.'|kilkunasto|kilkuset|półtora|pół|stu|wielo';
 	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)($JEDNOSTKI)\b/$1-\L$2/ogi; # 32 bitowy -> 32-bitowy
 	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)(\[\[)($LINK_JEDNOSTKI)(\]\]ow(ego|emu|ych|ymi|ym|ą|e|a|y))\b/$1-$2\L$3$4/gi;
