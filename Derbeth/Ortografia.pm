@@ -345,17 +345,20 @@ sub popraw_pisownie {
 	$linia = popraw_liczebniki($linia);
 	$linia =~ s/\b1(?:-|–|—)wszo /pierwszo/g;
 
+	my $LINK_JEDNOSTKI = '(?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajt|bit|gram|herc|metr)|cal|dolar|funt|galon|hektar|jard|karat|wat|wolt';
 	my $JEDNOSTKI = 'lat(ek|kami|ka|kiem|ki|ku|ków)'
 		.'|lec(iu|iem|ie|ia)'
 		.'|letn(ia|iej|ie|ią|ich|imi|im|i)'
-		.'|((((?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajtow|gramow|hercow|metrow))|barwn|biegow|bitow|bramkow|calow|cylindrow|cyfrow|częściow|dekadow|dniow|dolarow|drzwiow|dzieln|dzienn|elementow|etapow|fazow|funtow|galonow|godzinn|groszow|gwiazdkow|hektarow|jardow|kanałow|karatow|kątn|klasow|klawiszow|kołow|komorow|kondygnacyjn|konn|krotn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|siedzeniow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|watow|wieczn|woltow|wymiarow|zaworow|zdaniow|zębow|złotow)(ych|ymi|ym|ego|emu|ej|[aeyią]))';
-	my $LICZEBNIKI = '';
+		."|((?:$LINK_JEDNOSTKI)ow|barwn|biegow|bramkow|cylindrow|cyfrow|częściow|dekadow|dniow|drzwiow|dzieln|dzienn|elementow|etapow|fazow|godzinn|groszow|gwiazdkow|kanałow|kątn|klasow|klawiszow|kołow|komorow|kondygnacyjn|konn|krotn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|siedzeniow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|wieczn|wymiarow|zaworow|zdaniow|zębow|złotow)"
+			."(ych|ymi|ym|ego|emu|ej|[aeyią])";
+	# bez 'trzy' - zbyt duże ryzyko pomylenia z liczebnikiem głównym 'trzy'
+	my $BEZP_LICZEBNIKI = '[dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto';
 	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)($JEDNOSTKI)\b/$1-\L$2/ogi; # 32 bitowy -> 32-bitowy
-	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)(\[\[)((?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajt|bit|herc|metr)|cal|dolar|funt|galon|hektar|jard|karat|wat|wolt)(\]\]ow(ego|emu|ych|ymi|ym|ą|e|a|y))\b/$1-$2\L$3$4/gi;
-	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto) i pół ($JEDNOSTKI)/$1ipół$2/og; # http://so.pwn.pl/zasady.php?id=629465
+	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)(\[\[)($LINK_JEDNOSTKI)(\]\]ow(ego|emu|ych|ymi|ym|ą|e|a|y))\b/$1-$2\L$3$4/gi;
+	$linia =~ s/\b($BEZP_LICZEBNIKI) +i +pół +($JEDNOSTKI)/$1ipół$2/og; # http://so.pwn.pl/zasady.php?id=629465
 	$linia =~ s/\b([jJ]edno|[dD]wu|[tT]rój|[tT]rzy|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[sS]iedemnasto|[oO]siemnasto|[dD]wudziesto|[tT]rzydziesto|[kK]ilkunasto|[kK]ilkuset|[pP]ółtora|[pP]ół|[sS]tu|[wW]ielo)(?: | - |[-–—] | [-–—]|\. |–|—|-)($JEDNOSTKI)\b/$1$2/og; # sześcio tonowy -> sześciotonowy
-	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto)-(lub)/$1- $2/og; # trzy-lub czterokołowy
-	$linia =~ s/\b([dD]wu|[cC]ztero|[pP]ięcio|[sS]ześcio|[sS]iedmio|[oO]śmio|[dD]ziewięcio|[dD]ziesięcio|[dD]wunasto|[pP]iętnasto|[sS]zesnasto|[dD]wudziesto|[tT]rzydziesto)((?:, | ))/$1-$2/og if $ryzykowne; # cztero albo pięciosobowy
+	$linia =~ s/\b($BEZP_LICZEBNIKI)-(lub)/$1- $2/og; # trzy-lub czterokołowy
+	$linia =~ s/\b($BEZP_LICZEBNIKI)((?:, | ))/$1-$2/og if $ryzykowne; # cztero albo pięciosobowy
 
 	$linia =~ s/(lat(ach|a)?) '(\d\d)/$1 $3./g; # lat '80 -> lat 80.
 	$linia =~ s/ '(\d\d)\.(?!\d)/ $1./g; # lat '80. -> lat 80  # '
