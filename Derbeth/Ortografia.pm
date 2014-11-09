@@ -337,7 +337,7 @@ sub popraw_pisownie {
 	$linia =~ s/(\d)\. (stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia)/$1 $2/gi; # 1. stycznia -> 1 stycznia
 	
 	if ($usun_kropki_z_liczb) { # 1.000 -> 1 000; 13,000,000 -> 13 000 000
-		$linia =~ s/([ (])(\d{1,3})[.,]000([ )])/$1$2 000$3/g;
+		$linia =~ s/([ (])(\d{1,3})[.,]([50]00)([ )])/$1$2 $3$4/g;
 		$linia =~ s/([ (])(\d{1,3})([,.])(\d\d0)\3(000)([ )])/$1$2 $4 $5$6/g;
 	}
 	
