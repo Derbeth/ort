@@ -347,11 +347,13 @@ sub popraw_pisownie {
 	$linia = popraw_liczebniki($linia);
 	$linia =~ s/\b1(?:-|–|—)wszo /pierwszo/g;
 
+	my $RYZYK_JEDNOSTKI = $ryzykowne ? 'dzienn|' : '';
 	my $LINK_JEDNOSTKI = '(?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajt|bit|gram|herc|metr)|cal|dolar|frank|funt|galon|hektar|jard|karat|wat|wolt';
 	my $JEDNOSTKI = 'lat(ek|kami|ka|kiem|ki|ku|ków)'
 		.'|lec(iu|iem|ie|ia)'
 		.'|letn(ia|iej|ie|ią|ich|imi|im|i)'
-		."|((?:$LINK_JEDNOSTKI)ow|barwn|biegow|bramkow|cylindrow|cyfrow|częściow|dekadow|dniow|drzwiow|dzieln|dzienn|elementow|etapow|fazow|godzinn|groszow|gwiazdkow|kanałow|kątn|klasow|klawiszow|kołow|komorow|kondygnacyjn|konn|krotn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|siedzeniow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|wieczn|wymiarow|zaworow|zdaniow|zębow|złotow)"
+		."|((?:$LINK_JEDNOSTKI)ow|$RYZYK_JEDNOSTKI"
+		."barwn|biegow|bramkow|cylindrow|cyfrow|częściow|dekadow|dniow|drzwiow|dzieln|elementow|etapow|fazow|godzinn|groszow|gwiazdkow|kanałow|kątn|klasow|klawiszow|kołow|komorow|kondygnacyjn|konn|krotn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|nabojow|nawow|odcinkow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|siedzeniow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|wieczn|wymiarow|zaworow|zdaniow|zębow|złotow)"
 			."(ych|ymi|ym|ego|emu|ej|[aeyią])";
 	my $BEZP_PODST_LICZEBNIKI = 'dwu|cztero|pięcio|sześcio|siedmio|ośmio|dziewięcio|dziesięcio';
 	my $NIEBEZP_PODST_LICZEBNIKI = 'jedno|trój|trzy';
