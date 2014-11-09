@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.19;
+our $VERSION = 0.6.20;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -152,7 +152,8 @@ sub popraw_porzadkowe {
 
 sub popraw_porzadkowe2 {
 	my $linia = shift;
-	$linia =~ s/(lat\w* \d+)( ?– ?| )(tych|tymi|te)\b/$1./g;
+	$linia =~ s/(lat\w* +\d+)( ?– ?| )(tych|tymi|te)\b/$1./ig;
+	$linia =~ s/(lat\w* +)1\d(\d0\.)/$1$2/ig;
 	return $linia;
 }
 
@@ -312,6 +313,7 @@ sub popraw_pisownie {
 	$linia =~ s/\bdr\.\b/dr/g; # dr. -> dr, może działać źle
 	
 	# poprawa pisowni liczb: 10-te -> 10.
+	$linia =~ s/\b1\d(\d0)(\.|( ?- ?|'|–|—)?(tych|te|e))/$1$2/g if $ryzykowne; # lata 1980-te lub 1970-te
 	$linia = popraw_porzadkowe($linia);
 	$linia = popraw_porzadkowe2($linia);
 	
