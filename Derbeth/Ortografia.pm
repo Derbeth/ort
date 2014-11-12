@@ -1,17 +1,17 @@
 # MIT License
 #
-# Copyright (c) 2007-2012 Derbeth
-# 
+# Copyright (c) 2007-2014 Derbeth
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.20;
+our $VERSION = 0.6.21;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -42,13 +42,13 @@ our $ryzykowne = 1; # rozne nieco ryzykowne poprawki
 # eg. safe_replace("(\w)'(\w)", "$1-$2"
 sub safe_replace {
 	my ($match,$replace,$linia) = @_;
-	die unless $linia;	
+	die unless $linia;
 	my ($done, $todo) = ('', $linia);
 	while ($todo =~ /$match/) {
 		my ($before,$capture,$after) = ($`,$&,$');
 		my $true_replace = eval("$1 --> ");
 		print STDERR ">> $true_replace\n";
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) { 
+		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$capture =~ s/$match/$replace/ or die;
 		}
 		$done .= $before.$capture;
@@ -60,7 +60,7 @@ sub safe_replace {
 sub popraw_apostrofy {
 	my $linia = shift;
 	my @czesci = split /(<math>.*?<\/math>)/i, $linia;
-	for (my $i=0; $i<=$#czesci; ++$i) {	
+	for (my $i=0; $i<=$#czesci; ++$i) {
 		if ($czesci[$i] !~ /<math>/i) {
 			$czesci[$i] = popraw_apostrofy1($czesci[$i]);
 			$czesci[$i] = popraw_apostrofy2($czesci[$i]);
@@ -133,7 +133,7 @@ sub popraw_porzadkowe {
 	if ($linia =~ /<math>/i) {
 		return $linia;
 	}
-	
+
 	if ($linia =~ /(\d|\b[XIV]+\b)(\]\])?\.?( ?- ?|'|’|`|–|—)?(stym|tym|dmym|mym|wszym|szym|ym|stymi|tymi|ymi|stych|tych|sty|ty|stą|tą|ą|sta|ta|stej|dmej|mej|tej|ej|wszego|szego|wszej|szej|stego|tego|dmego|mego|ste|te|dme|ciego|ciej|cim|cie|cia|cią|ci|gim|im|giego|giej|gie|gi|go|ga|iej|iego|wsza|sza|wsze|sze|wszych|szych|dmych|mych|ych|dmy|my|dma|ma|dmą|mą|wszy|szy|me|e|ego|go|y|ą)\b/) {
 		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $m3)
@@ -176,7 +176,7 @@ sub popraw_liczebniki1 {
 	if ($linia =~ /<math>/i) {
 		return $linia;
 	}
-	
+
 	my $separator = $ryzykowne ?
 		"( ?[-–—] ?)?" :
 		"( ?- ?|[–—])?";
@@ -186,7 +186,7 @@ sub popraw_liczebniki1 {
 			$match = "$1-"; # 5-cio osobowy -> 5-osobowy, XIX-sto wieczny -> XIX-wieczny
 		}
 		$after = popraw_liczebniki1($after);
-		$linia = $before.$match.$after;	
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -196,7 +196,7 @@ sub popraw_liczebniki2 {
 	if ($linia =~ /<math>/i) {
 		return $linia;
 	}
-	
+
 	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(miu|toma|cioma|ciu|wu|stu|rech|ech|tu|óch|ch|u)\b/) {
 		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $2)
@@ -204,7 +204,7 @@ sub popraw_liczebniki2 {
 			$match = "$1"; # 12-tu -> 12
 		}
 		$after = popraw_liczebniki2($after);
-		$linia = $before.$match.$after;	
+		$linia = $before.$match.$after;
 	}
 	return $linia;
 }
@@ -226,7 +226,7 @@ sub interpunkcja {
 		my ($done, $todo) = ('', $linia); # coś.Niecoś -> coś. Niecoś
 		while ($todo =~ /([a-ząćęłńóśżź\]])\.([A-ZĄĆĘŁŃÓŚŻŹ])/) {
 			my ($before,$match,$after,$m1,$m2) = ($`,$&,$',$1,$2);
-			if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) { 
+			if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && "$m2$after" !~ /(JPEG|JPG|PNG|GIF)\b/) {
 				$match = "$1. $2";
 			}
 			$done .= $before.$match;
@@ -234,7 +234,7 @@ sub interpunkcja {
 		}
 		$linia = $done.$todo;
 	}
-	
+
 	#$linia = safe_replace("([a-ząćęłńóśżź])\.([A-ZĄĆĘŁŃÓŚŻŹ])", "$1. $2", $linia);
 	# norm
 	$linia =~ s/\b((?:J|j)ako|(?:m|M)imo), (iż|że)\b/$1 $2/g;
@@ -249,7 +249,7 @@ sub interpunkcja {
 	$linia =~ s/([^;>,\-–—]) ((z|bez|od|do|po|dla) (któr(ymi|ym|ej|ego|ych|ym|ą)))\b/$1, $2/g;
 	# odwracanie
 	$linia =~ s/\bco, do któr(ych|ego|ej)\b/co do któr$1/g;
-	$linia =~ s/\b(zgodnie|wraz), z któr(ymi|ym|ą)\b/$1 z któr$2/g;	
+	$linia =~ s/\b(zgodnie|wraz), z któr(ymi|ym|ą)\b/$1 z któr$2/g;
 	$linia =~ s/\bi, (po|od|z) któr(ych|ym|ego|ej)\b/i $1 któr$2/g;
 	$linia =~ s/\bi, (mimo że)\b/i $1/g;
 	return $linia;
@@ -261,14 +261,14 @@ sub typografia {
 	my ($done, $todo) = ('', $linia);
 	while ($todo =~ /(\d(?:\]\])?) (?:-|–|—|&[mn]dash;) ?((?:\[\[)?\d)/) {
 		my ($before,$match,$after,$m1,$m2) = ($`,$&,$',$1,$2);
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) { 
+		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$m1–$m2";
 		}
 		$done .= $before.$match;
 		$todo = $after;
 	}
 	$linia = $done.$todo;
-	
+
 	# [[1]]-[[2]] -> [[1]]półpauza[[2]]
 	($done, $todo) = ('', $linia);
 	while ($todo =~ /(^|[ (])((?:\[\[)?\d+(?:\]\])?)-((?:\[\[)?\d+(?:\]\])?)([ )&;,]|$)/) {
@@ -280,19 +280,19 @@ sub typografia {
 		$todo = $after;
 	}
 	$linia = $done.$todo;
-	
+
 	# a - b -> a półpauza b
 	($done, $todo) = ('', $linia);
 	while ($todo =~ / - /) {
 		my ($before,$match,$after) = ($`,$&,$');
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) { 
+		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = " – ";
 		}
 		$done .= $before.$match;
 		$todo = $after;
 	}
 	$linia = $done.$todo;
-	
+
 	return $linia;
 }
 
@@ -311,12 +311,12 @@ sub popraw_pisownie {
 	$linia =~ s!\b(W|w)\/g\b!$1g!g;  # w/g -> wg
 	$linia =~ s!\bd\/s\b!ds.!g;  # w/g -> wg
 	$linia =~ s/\bdr\.\b/dr/g; # dr. -> dr, może działać źle
-	
+
 	# poprawa pisowni liczb: 10-te -> 10.
 	$linia =~ s/\b1\d(\d0)(\.|( ?- ?|'|–|—)?(tych|te|e))/$1$2/g if $ryzykowne; # lata 1980-te lub 1970-te
 	$linia = popraw_porzadkowe($linia);
 	$linia = popraw_porzadkowe2($linia);
-	
+
 	if ($rzymskie_niebezp) {
 		my ($done, $todo) = ('', $linia);  # nie ma kropki po rzymskich licz. porz. XX. -> XX <- niebezpieczne
 		while ($todo =~ /\b([XIV]+)\./) {
@@ -330,17 +330,17 @@ sub popraw_pisownie {
 		$linia = $done.$todo;
    }
    $linia =~ s/(\b[XIV]+)\. (wiek|wieczn|stuleci)/$1 $2/g; # XX. wieku -> XX wieku
-   $linia =~ s/((w|W)ieku?) (\b[XIV]+)\./$1 $3/g; # wiek XX. -> wiek XX 
+   $linia =~ s/((w|W)ieku?) (\b[XIV]+)\./$1 $3/g; # wiek XX. -> wiek XX
    $linia =~ s/(\b[XIV]+)( |- | -| - |[–—])(wieczn)/$1-$3/g; # XX wieczny -> XX-wieczny
 
 	$linia =~ s/(godzin(a|ie|ą)) (\d+)\.(?!\d)/$1 $3/g; # o godzinie 10. -> o godzinie 10
 	$linia =~ s/(\d)\. (stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia)/$1 $2/gi; # 1. stycznia -> 1 stycznia
-	
+
 	if ($usun_kropki_z_liczb) { # 1.000 -> 1 000; 13,000,000 -> 13 000 000
 		$linia =~ s/([ (])(\d{1,3})[.,]([50]00)([ )])/$1$2 $3$4/g;
 		$linia =~ s/([ (])(\d{1,3})([,.])(\d\d0)\3(000)([ )])/$1$2 $4 $5$6/g;
 	}
-	
+
 	# wstawia QQQ jako znak, że to trzeba zweryfikować ręcznie
 	$linia =~ s/(\d)( ?- ?|[–—])?(set)\b/$1-$3QQQ/g; # ostrzeżenie przed 400-set itp.
 	$linia =~ s/(\d)( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ke|ce|ek))\b/$1-$3QQQ/g; # ostrzeżenie przed zapisem 12-tka (http://poradnia.pwn.pl/lista.php?id=7010)
@@ -375,9 +375,9 @@ sub popraw_pisownie {
 	$linia =~ s/(lat(ach|a)?) '(\d\d)/$1 $3./g; # lat '80 -> lat 80.
 	$linia =~ s/ '(\d\d)\.(?!\d)/ $1./g; # lat '80. -> lat 80  # '
 	$linia =~ s/\b([XIV]{2,})w\./$1 w./g; # XXw. -> XX w.
-	
+
 	$linia =~ s/keQQQ/kęQQQ/g;
-	
+
 	$linia =~ s/10( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/dziesiąt$4/g;
 	$linia =~ s/11( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/jedenast$4/g;
 	$linia =~ s/12( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/dwunast$4/g;
@@ -396,7 +396,7 @@ sub popraw_pisownie {
 	$linia =~ s/70( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/siedemdziesiąt$4/g;
 	$linia =~ s/80( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/osiemdziesiąt$4/g;
 	$linia =~ s/90( ?- ?|[–—])?((st|t|)(kom|kach|kami|ka|ki|kę|ką|ce|ek))QQQ\b/dziewięćdziesiąt$4/g;
-	
+
 	if ($ryzykowne) {
 		my ($done, $todo) = ('', $linia);  # 4.. -> 4. ale nie 4...
 		while ($todo =~ /(\d)\.\.(?!\.)/) {
@@ -409,13 +409,13 @@ sub popraw_pisownie {
 		}
 		$linia = $done.$todo;
 	}
-	
+
 	$linia =~ s/\b(d|D)j\b/DJ/g; # Dj -> DJ
 	#$linia =~ s/([A-Z]|Ł|Ż)('|’|`)(ską|ski|ką|kę|[uaeyoiąęćó])/$1$3/g; # ' # DJ'a -> DJa, w następnej linii się poprawi porządnie
-	
+
 	# poprawa odmiany skrótowców: LOTu -> LOT-u
 	$linia = popraw_skrotowce($linia);
-	
+
 	$linia =~ s/Ż-e\b/Że/g; # popr. po poprzednim
 	#$linia =~ s/(Ł)-/$1/g; # usunięcie Łyżwiński -> Ł-yżwiński
 	$linia =~ s/\bhP-a\b/hPa/g;
@@ -431,10 +431,10 @@ sub popraw_pisownie {
 		if ( $2 eq ']]' ) { $subst = "$1X|$subst]]"; }
 		$linia =~ s/\b([A-Z]+)X(\]\])?-ie\b/$subst/g;
 	}
-	
+
 	# apostrofy
 	$linia =~ s/\B(oy|ey)('|’|`|-|–|—)e?go\b/$1’a/g;
-	
+
 	$linia = popraw_apostrofy($linia);
 	$linia =~ s/(Jak|Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(iem|em|m)\b/$1iem/g; # Mike'm -> Mikiem
 	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
@@ -473,20 +473,20 @@ sub popraw_pisownie {
 
 	$linia =~ s/Diksie/Dixie/g; # z powrotem
 	$linia =~ s/(WiF|TD|HD|HiF)-i/$1i/g;   # z powrotem
-	
+
 	$linia =~ s/\bsmsy\b/SMS-y/g;
 	$linia =~ s/\b((MSZ|ONZ)(\]\])?)(-| -|- |'|’|`|–|—)(tu|u)/$1-etu/g;
 	$linia =~ s/\b((MSZ|ONZ)(\]\])?)(-| -|- |'|’|`|–|—)(cie)/$1-ecie/g;
 
 	$linia =~ s/\[\[([^|]+)\|\1(a|e|u|ie|em)\]\]/[[$1]]$2/g; # [[boks|boksu]] -> [[boks]]u
 	$linia =~ s/:\s*==/==/g;
-	
+
 	# pisownia, literówki, częste błędy
 	$linia =~ s/(bieżni|elektrowni|głębi|jaskini|Korei|powierzchni|pustyni|skoczni|skrobi|uczelni|ziemi)i/$1/gi; # "Koreii", "ziemii" itp.
 	$linia =~ s/\b(Austri|Australi|Algieri|amfibi|Armeni|Belgi|[bB]ibli|Brazyli|Brytani|Bułgari|Cynthi|Estoni|Etiopi|Finlandi|Grenlandi|Hiszpani|Holandi|Irlandi|Islandi|Japoni|Jordani|Jugosławi|laryngologi|lini|Mołdawi|Mongoli|Nigeri|Norwegi|opini|Portugali|Serbi|Słoweni|stomatologi|Szwajcari|Tajlandi|Virgini|Zelandi)\b/$1i/g; # Japoni -> Japonii
 	$linia =~ s/\b(ale|knie|kole|mierze|nadzie|Okrze|ru|szy|Zia)ji\b/$1i/gi; # szyji -> szyi
 	$linia =~ s/(analfabety|anarchi|buddy|fanaty|faszy|femini|judai|kapitali|katechi|komuni|marksi|masochi|mechani|mesjani|nazi|nihili|oportuni|optymi|organi|pesymi|platoni|pozytywi|protestanty|radykali|romanty|sady|socjali|syndykali|totalitary|trocki)źmie/${1}zmie/gi; # komuniźmie -> komunizmie
-	
+
 	$linia =~ s/\bz pośród\b/spośród/g;
 	$linia =~ s/\bZ pośród\b/Spośród/g;
 	$linia =~ s/\b(W|w) śród\b/$1śród/g;
@@ -543,7 +543,7 @@ sub popraw_pisownie {
 	$linia =~ s/\bz przed\b/sprzed/g;
 	$linia =~ s/\b(N|n)ie dług(o|i)\b/$1iedług$2/g;
 	$linia =~ s/\b(P|p)oprostu\b/$1o prostu/g;
-	
+
 	$linia =~ s/\btą (mapę|jaskinię)\b/tę $1/g;
 	$linia =~ s/\bbieże\b/bierze/g;
 	$linia =~ s/\b(a|A)bsorbcj(a|i|ą)\b/$1bsorpcj$2/g;
@@ -611,38 +611,38 @@ sub popraw_pisownie {
 			$linia =~ s/W(icente?|icenz)/V$1/g; # cofamy: Vincente, Vicenza
 		}
 	}
-	
+
 	# interpunkcja
 	if ($interpunkcja) {
 		$linia = interpunkcja($linia);
 	}
-	
+
 	$linia =~ s/\b(wschodni|zachodni)o(?:-|–|—| )(północn|południow)/${2}o-$1/g;
 	$linia =~ s/\b(wschodn|zachodn)iy/${1}i/g;
-	
+
 	$linia =~ s/(t|T)rash( |-|–|—)metal/$1hrash metal/g;
 	$linia =~ s/\b(art|black|death|doom|glam|gothic|groove|hard|heavy|nu|pop|punk|speed|thrash)( |-)(rock|metal|punk)(owych|owy|owej|owa|owym|owe|ową|owo|owiec)/$1$3$4/gi;
 	$linia =~ s/\[\[(art|black|death|doom|glam|gothic|groove|hard|heavy|nu|pop|punk|speed|thrash)( |-)(rock|metal|punk)\]\](owych|owy|owa|owej|owym|owe|ową|owo|owiec)/[[$1 $3|$1$3$4]]/g;
 	$linia =~ s/hip hop(owym|owy|owa|owej|owym|owe)/hip-hop$1/g;
 	$linia =~ s/\[\[hip hop\]\](owy|owa|owej|owym|owe)/[[hip hop|hip-hop$1]]/g;
-	
+
 	#typografia
 	if ($typografia) {
 		$linia = typografia($linia);
 	}
-	
+
 	# techniczne
 	#$linia =~ s/\[\[([0-9a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŻŹ]+( [a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŻŹ]+)?)\|\1\]\]/[[$1]]/g; # [[a|a]] -> [[a]], [[a b|a b]] -> [[a b]]
 	$linia =~ s/\[\[([^|]+)\|\1\]\]/[[$1]]/g; # [[a|a]] -> [[a]], [[a b|a b]] -> [[a b]]
-	
+
 	$linia =~ s/(==\s*)Zobacz także/${1}Zobacz też/i;
 	$linia =~ s/Zewnętrzne linki/Linki zewnętrzne/i;
 	$linia =~ s/\[\[(Image|Grafika|Plik|File): */[[Plik:/gi;
-		
+
 	if ($kasuj_bry) {
 		$linia =~ s/(<br( ?\/)?>){2}/\n\n/g;
 	}
-	
+
 	return $linia;
 }
 
