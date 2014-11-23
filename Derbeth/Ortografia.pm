@@ -174,6 +174,19 @@ sub popraw_porzadkowe2 {
 	return $linia;
 }
 
+sub popraw_angielskie_lata {
+	my ($linia) = @_;
+	if ($linia =~ /\b1\d(\d0)(\.|( ?- ?|'|–|—)?(tych|te|e))/) {
+		my ($m1,$m2,$match,$before,$after) = ($1,$2,$&,$`,$');
+		if ($before !~ /(rok\w+\s+|[-–])$/ && $after !~ /^\.?(jpg|jpeg|svg|png|gif)\b/i) {
+			$match = "$m1$m2"; # lata 1980-te lub 1970-te
+		}
+		$after = popraw_angielskie_lata($after);
+		$linia = $before.$match.$after;
+	}
+	return $linia;
+}
+
 sub popraw_liczebniki1 {
 	my $linia = shift;
 	if ($linia =~ /<math>/i) {
@@ -320,7 +333,7 @@ sub popraw_pisownie {
 	}
 
 	# poprawa pisowni liczb: 10-te -> 10.
-	$linia =~ s/\b1\d(\d0)(\.|( ?- ?|'|–|—)?(tych|te|e))/$1$2/g if $ryzykowne; # lata 1980-te lub 1970-te
+	$linia = popraw_angielskie_lata($linia) if $ryzykowne;
 	$linia = popraw_porzadkowe($linia);
 	$linia = popraw_porzadkowe2($linia);
 
