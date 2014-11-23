@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.21;
+our $VERSION = 0.6.22;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -113,6 +113,20 @@ sub popraw_apostrofy3 {
 	return $linia;
 }
 
+sub popraw_em {
+	my $linia = shift;
+	if ($linia =~ /(b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z)e(\]\])?('|’|`|-|–|—)m\b/) {
+		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
+		$m2 ||= '';
+		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+			$match = "${m1}e${m2}${m3}em"; # Steve'm -> Steve'em
+		}
+		$after = popraw_em($after);
+		$linia = $before.$match.$after;
+	}
+	return $linia;
+}
+
 sub popraw_skrotowce {
 	my $linia = shift;
 	if ($linia =~ /([a-zA-ZłśżŁŚŻ][A-ZŁŚŻ])(\]\])?('|’|`|- | -|–|—)?(ach|ami|zie|ów|ka|etu|ecie|ocie|otu|owych|owym|owy|owi|owa|owe|ką|kę|(?:(?:ow)?(?:skie|skich|skim|ski|ską))|iem|em|om|ie|i|a|e|ę|u|y)\b(?![a-zćłńóśźż])/) {
@@ -134,7 +148,10 @@ sub popraw_porzadkowe {
 		return $linia;
 	}
 
-	if ($linia =~ /(\d|\b[XIV]+\b)(\]\])?\.?( ?- ?|'|’|`|–|—)?(stym|tym|dmym|mym|wszym|szym|ym|stymi|tymi|ymi|stych|tych|sty|ty|stą|tą|ą|sta|ta|stej|dmej|mej|tej|ej|wszego|szego|wszej|szej|stego|tego|dmego|mego|ste|te|dme|ciego|ciej|cim|cie|cia|cią|ci|gim|im|giego|giej|gie|gi|go|ga|iej|iego|wsza|sza|wsze|sze|wszych|szych|dmych|mych|ych|dmy|my|dma|ma|dmą|mą|wszy|szy|me|e|ego|go|y|ą)\b/) {
+	my $separator = $ryzykowne ?
+		"( ?[-–—] ?|['’`])?" :
+		"( ?- ?|[–—'’`])?";
+	if ($linia =~ /(\d|\b[XIV]+\b)(\]\])?\.?$separator(stym|tym|dmym|mym|wszym|szym|ym|stymi|tymi|ymi|stych|tych|sty|ty|stą|tą|ą|sta|ta|stej|dmej|mej|tej|ej|wszego|szego|wszej|szej|stego|tego|dmego|mego|ste|te|dme|ciego|ciej|cim|cie|cia|cią|ci|gim|im|giego|giej|gie|gi|go|ga|iej|iego|wsza|sza|wsze|sze|wszych|szych|dmych|mych|ych|dmy|my|dma|ma|dmą|mą|wszy|szy|me|e|ego|go|y|ą)\b/o) {
 		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $m3)
 		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
@@ -152,22 +169,8 @@ sub popraw_porzadkowe {
 
 sub popraw_porzadkowe2 {
 	my $linia = shift;
-	$linia =~ s/(lat\w* +\d+)( ?– ?| )(tych|tymi|te)\b/$1./ig;
+	$linia =~ s/(lat\w* +\d+)( ?[-–—] ?| )(tych|tymi|te)\b/$1./ig;
 	$linia =~ s/(lat\w* +)1\d(\d0\.)/$1$2/ig;
-	return $linia;
-}
-
-sub popraw_em {
-	my $linia = shift;
-	if ($linia =~ /(b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z)e(\]\])?('|’|`|-|–|—)m\b/) {
-		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
-		$m2 ||= '';
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
-			$match = "${m1}e${m2}${m3}em"; # Steve'm -> Steve'em
-		}
-		$after = popraw_em($after);
-		$linia = $before.$match.$after;
-	}
 	return $linia;
 }
 
@@ -365,10 +368,11 @@ sub popraw_pisownie {
 	my $LICZEBNIKI = $BEZP_LICZEBNIKI
 		.'|'.$NIEBEZP_PODST_LICZEBNIKI
 		.'|kilkunasto|kilkuset|półtora|pół|stu|wielo';
-	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)($JEDNOSTKI)\b/$1-\L$2/ogi; # 32 bitowy -> 32-bitowy
-	$linia =~ s/(\d)(?: | - |[-–—] | [-–—]|\. |–|—)(\[\[)($LINK_JEDNOSTKI)(\]\]ow(ego|emu|ych|ymi|ym|ą|e|a|y))\b/$1-$2\L$3$4/gi;
+	my $separator = '(?: | ?[-–—] ?|\. )';
+	$linia =~ s/(\d)$separator($JEDNOSTKI)\b/$1-\L$2/ogi; # 32 bitowy -> 32-bitowy
+	$linia =~ s/(\d)$separator(\[\[)($LINK_JEDNOSTKI)(\]\]ow(ego|emu|ych|ymi|ym|ą|e|a|y))\b/$1-$2\L$3$4/gi;
 	$linia =~ s/\b($BEZP_LICZEBNIKI) +i +pół +($JEDNOSTKI)/$1ipół$2/ogi; # http://so.pwn.pl/zasady.php?id=629465
-	$linia =~ s/\b($LICZEBNIKI)(?: | - |[-–—] | [-–—]|\. |–|—|-)($JEDNOSTKI)\b/$1$2/ogi; # sześcio tonowy -> sześciotonowy
+	$linia =~ s/\b($LICZEBNIKI)$separator($JEDNOSTKI)\b/$1$2/ogi; # sześcio tonowy -> sześciotonowy
 	$linia =~ s/\b($BEZP_LICZEBNIKI)-(lub)/$1- $2/ogi; # trzy-lub czterokołowy
 	$linia =~ s/\b($BEZP_LICZEBNIKI)((?:, | ))/$1-$2/ogi if $ryzykowne; # cztero albo pięciosobowy
 
