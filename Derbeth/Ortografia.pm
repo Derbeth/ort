@@ -306,14 +306,18 @@ sub popraw_pisownie {
 
 	$linia =~ s/ \]\] /]] /g; # usuwanie spacji przed koncem linku
 	$linia =~ s/ \[\[ / \[\[/g; # usuwanie spacji na początku linkus
-	$linia =~ s/\bnr\.(\d)/nr $1/g; # nr.10 -> nr 10
-	$linia =~ s/\b(wg|nr|Wg|Nr|mgr|mjr|ppłk|płk)\./$1/g;
+	$linia =~ s/\b(wg|Wg)\./$1/g;
 	$linia =~ s!\b(W|w)\/w\b!$1w.!g; # w/w -> ww.
 	$linia =~ s/\b(j|J)\/w\b/$1w./g; # j/w -> jw.
 	$linia =~ s/\b(j|J)\.w\./$1w./g;
 	$linia =~ s!\b(W|w)\/g\b!$1g!g;  # w/g -> wg
 	$linia =~ s!\bd\/s\b!ds.!g;  # w/g -> wg
 	$linia =~ s/\bdr\.\b/dr/g; # dr. -> dr, może działać źle
+
+	if ($ryzykowne) {
+		$linia =~ s/\bnr\.(\d)/nr $1/g; # nr.10 -> nr 10
+		$linia =~ s/\b(nr|Nr|mgr|Mgr|mjr|Mjr|ppłk|Ppłk|płk|Płk)\./$1/g;
+	}
 
 	# poprawa pisowni liczb: 10-te -> 10.
 	$linia =~ s/\b1\d(\d0)(\.|( ?- ?|'|–|—)?(tych|te|e))/$1$2/g if $ryzykowne; # lata 1980-te lub 1970-te
