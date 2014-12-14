@@ -149,9 +149,15 @@ sub popraw_porzadkowe {
 	}
 
 	my $separator = $ryzykowne ?
-		"( ?[-–—] ?|['’`])?" :
-		"( ?- ?|[–—'’`])?";
-	if ($linia =~ /(\d|\b[XIV]+\b)(\]\])?\.?$separator(stym|tym|dmym|mym|wszym|szym|ym|stymi|tymi|ymi|stych|tych|sty|ty|stą|tą|sta|ta|stej|dmej|mej|tej|ej|wszego|szego|wszej|szej|stego|tego|dmego|mego|ste|te|dme|ciego|ciej|cim|cie|cia|cią|ci|gim|im|giego|giej|gie|gi|go|ga|iej|iego|tna|tnej|tnego|tne|tnym|tnych|tny|tną|na|nej|nego|ne|nym|nych|ny|ną|wsza|sza|wsze|sze|wszych|szych|dmych|mych|ych|dmy|my|dma|ma|dmą|mą|wszy|szy|me|e|ego|go|y|ą)\b/o) {
+		"(\\s?[-–—]\\s?|['’`])?" :
+		"(\\s?-\\s?|[–—'’`])?";
+	if ($linia =~ /(\d|\b[XIV]+\b)(\]\])?\.?$separator(
+			stym|tym|dmym|mym|wszym|szym|ym|stymi|tymi|ymi|stych|tych|sty|ty|stą|tą|sta|ta|stej|
+			dmej|mej|tej|ej|wszego|szego|wszej|szej|stego|tego|dmego|mego|ste|te|
+			dme|ciego|ciej|cim|cie|cia|cią|ci|gim|im|giego|giej|gie|gi|go|ga|iej|iego|
+			tna|tnej|tnego|tne|tnym|tnych|tny|tną|na|nej|nego|ne|nym|nych|ny|ną|
+			wsza|sza|wsze|sze|wszych|szych|dmych|mych|ych|dmy|my|dma|ma|dmą|mą|
+			wszy|szy|me|e|ego|go|y|ą)\b/ox) {
 		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $m3)
 		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
