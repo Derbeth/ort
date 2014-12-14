@@ -178,7 +178,7 @@ sub popraw_angielskie_lata {
 	my ($linia) = @_;
 	if ($linia =~ /\b1\d(\d0)(\.|( ?- ?|'|–|—)?(tych|te|e))/) {
 		my ($m1,$m2,$match,$before,$after) = ($1,$2,$&,$`,$');
-		if ($before !~ /(rok\w+\s+|[-–])$/ && $after !~ /^\.?(jpg|jpeg|svg|png|gif)\b/i) {
+		if ($before !~ /(rok\w+\s+|[-–])$/ && $m1 ne '00' && $after !~ /^\.?(jpg|jpeg|svg|png|gif)\b/i) {
 			$match = "$m1$m2"; # lata 1980-te lub 1970-te
 		}
 		$after = popraw_angielskie_lata($after);
