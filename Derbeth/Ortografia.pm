@@ -362,6 +362,7 @@ sub popraw_pisownie {
 
 	$linia =~ s/(godzin(a|ie|ą)) (\d+)\.(?!\d)/$1 $3/g; # o godzinie 10. -> o godzinie 10
 	$linia =~ s/(\d)\. (stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia)/$1 $2/gi; # 1. stycznia -> 1 stycznia
+	$linia =~ s/(\d{4})\. (r\.)/$1 $2/g;
 
 	if ($usun_kropki_z_liczb) { # 1.000 -> 1 000; 13,000,000 -> 13 000 000
 		$linia =~ s/([ (])(\d{1,3})[.,]([50]00)([ )])/$1$2 $3$4/g;
