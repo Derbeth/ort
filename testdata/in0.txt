@@ -127,6 +127,7 @@ ktorą zwiazek gdyz zaden
 == Skrótowce ==
 LOT'u LOTu [[LOT]]'u [[LOT]]owi LOT- owi LOT -em
 dj'om
+RFN’owskim NRDowcem PZPR'owiec ZMP'owcy PiS'owcu
 zostawić w spokoju: kPa itp.
 
 == Skróty ==
@@ -169,6 +170,9 @@ wschodnio południowemu zachodnio-południowej
 :<MATH>n_i=\sum^{\infty}_0e^{-\beta(nE_0-un)}</MATH>
 :<MATH>n=\sum^{\infty}_{n=1} {({{e^{-\beta(E_0-u)}}})}^n</MATH>
 Tak <math>0=0</math> jest u Jeffrey'a.
+
+== Nie ruszać ==
+Łyżwiński
 
 [[Kategoria: cośtam takie]] [[kategoria:Owaśtam]] [[kategoria:inna]]
 [[Category:łódki]]

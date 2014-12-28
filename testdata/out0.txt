@@ -127,6 +127,7 @@ którą związek gdyż żaden
 == Skrótowce ==
 LOT-u LOT-u [[LOT]]-u [[LOT]]-owi LOT-owi LOT-em
 DJ-om
+RFN-owskim NRD-owcem PZPR-owiec ZMP-owcy PiS-owcu
 zostawić w spokoju: kPa itp.
 
 == Skróty ==
@@ -169,6 +170,9 @@ południowo-wschodniemu południowo-zachodniej
 :<MATH>n_i=\sum^{\infty}_0e^{-\beta(nE_0-un)}</MATH>
 :<MATH>n=\sum^{\infty}_{n=1} {({{e^{-\beta(E_0-u)}}})}^n</MATH>
 Tak <math>0=0</math> jest u Jeffreya.
+
+== Nie ruszać ==
+Łyżwiński
 
 [[Kategoria:Cośtam takie]]
 [[Kategoria:Owaśtam]]

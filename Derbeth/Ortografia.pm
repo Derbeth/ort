@@ -129,7 +129,7 @@ sub popraw_em {
 
 sub popraw_skrotowce {
 	my $linia = shift;
-	if ($linia =~ /([a-zA-ZłśżŁŚŻ][A-ZŁŚŻ])(\]\])?('|’|`|- | -|–|—)?(ach|ami|zie|ów|ka|etu|ecie|ocie|otu|owych|owym|owy|owi|owa|owe|ką|kę|(?:(?:ow)?(?:skie|skich|skim|ski|ską))|iem|em|om|ie|i|a|e|ę|u|y)\b(?![a-zćłńóśźż])/) {
+	if ($linia =~ /([a-zA-ZłśżŁŚŻ][A-ZŁŚŻ])(\]\])?('|’|`|- | -|–|—)?(ach|ami|zie|ów|ka|etu|ecie|ocie|otu|owych|owym|owy|owi|owa|owe|owców|owcy|owcu|owiec|owcem|owcowi|owcami|owca|ką|kę|(?:(?:ow)?(?:skie|skich|skim|ski|ską))|iem|em|om|ie|i|a|e|ę|u|y)\b(?![a-zćłńóśźż])/) {
 		my ($m1,$m2,$m3,$m4,$match,$before, $after) = ($1,$2,$3,$4,$MATCH,$PREMATCH,$POSTMATCH);
 		$m2 ||= '';
 		if (($ryzykowne || $m3)
