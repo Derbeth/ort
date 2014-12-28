@@ -446,7 +446,6 @@ sub popraw_pisownie {
 	$linia = popraw_skrotowce($linia);
 
 	$linia =~ s/Ż-e\b/Że/g; # popr. po poprzednim
-	#$linia =~ s/(Ł)-/$1/g; # usunięcie Łyżwiński -> Ł-yżwiński
 	$linia =~ s/\bhP-a\b/hPa/g;
 	if ($linia =~ /\b([A-Z]+)T(\]\])?[-–—]ie\b/ ) { # LOT-ie -> Locie
 		my $subst = lc($1) . "cie";
@@ -501,14 +500,12 @@ sub popraw_pisownie {
 	$linia =~ s/Yves('|’|`|-)?ie\b/Ywie/g;
 
 	$linia =~ s/Diksie/Dixie/g; # z powrotem
+
 	$linia =~ s/(WiF|TD|HD|HiF)-i/$1i/g;   # z powrotem
 
 	$linia =~ s/\bsmsy\b/SMS-y/g;
 	$linia =~ s/\b((MSZ|ONZ)(\]\])?)(-| -|- |'|’|`|–|—)(tu|u)/$1-etu/g;
 	$linia =~ s/\b((MSZ|ONZ)(\]\])?)(-| -|- |'|’|`|–|—)(cie)/$1-ecie/g;
-
-	$linia =~ s/\[\[([^|]+)\|\1(a|e|u|ie|em)\]\]/[[$1]]$2/g; # [[boks|boksu]] -> [[boks]]u
-	$linia =~ s/:\s*==/==/g;
 
 	# pisownia, literówki, częste błędy
 	$linia =~ s/(bieżni|elektrowni|głębi|jaskini|Korei|powierzchni|pustyni|skoczni|skrobi|uczelni|ziemi)i/$1/gi; # "Koreii", "ziemii" itp.
@@ -663,7 +660,9 @@ sub popraw_pisownie {
 	# techniczne
 	#$linia =~ s/\[\[([0-9a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŻŹ]+( [a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŻŹ]+)?)\|\1\]\]/[[$1]]/g; # [[a|a]] -> [[a]], [[a b|a b]] -> [[a b]]
 	$linia =~ s/\[\[([^|]+)\|\1\]\]/[[$1]]/g; # [[a|a]] -> [[a]], [[a b|a b]] -> [[a b]]
+	$linia =~ s/\[\[([^|]+)\|\1(a|e|u|ie|em)\]\]/[[$1]]$2/g; # [[boks|boksu]] -> [[boks]]u
 
+	$linia =~ s/:\s*==/==/g;
 	$linia =~ s/(==\s*)Zobacz także/${1}Zobacz też/i;
 	$linia =~ s/Zewnętrzne linki/Linki zewnętrzne/i;
 	$linia =~ s/\[\[(Image|Grafika|Plik|File): */[[Plik:/gi;

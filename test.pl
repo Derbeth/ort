@@ -5,8 +5,12 @@ use strict;
 use Getopt::Long;
 
 my $interactive=1; # run kdiff3
+my $continue=0;
 
-GetOptions('i|interactive!'=> \$interactive) or die;
+GetOptions(
+	'i|interactive!'=> \$interactive,
+	'c|continue!' => \$continue,
+) or die;
 
 my $TESTDATA_DIR = 'testdata';
 my $TEST_TEMP_DIR = '/tmp/ort-test';
@@ -14,7 +18,8 @@ my $TEST_TEMP_DIR = '/tmp/ort-test';
 `rm -rf $TEST_TEMP_DIR/`;
 `mkdir $TEST_TEMP_DIR`;
 
-my $tests=-1;
+my $successful=0;
+my $failed=0;
 for (my $i=$ARGV[0] || 0 ; ; ++$i) {
 	my $test_input = "$TESTDATA_DIR/in${i}.txt";
 	my $test_output = "$TEST_TEMP_DIR/out${i}.txt";
@@ -30,12 +35,17 @@ for (my $i=$ARGV[0] || 0 ; ; ++$i) {
 		print "Test no. $i failed.\n";
 		my $diff_program = $interactive ? 'kdiff3' : 'diff --unified=2';
 		system("$diff_program $test_output $test_expected");
-		exit(11);
+		exit(11) unless $continue;
+		++$failed;
+	} else {
+		++$successful;
 	}
-
-	$tests = $i+1;
 }
-print "\n$tests tests succeeded.\n";
+print "\n$successful tests succeeded.\n";
+if ($failed) {
+	print "$failed failed\n";
+	exit(11);
+}
 exit(0);
 
 # returns true if files are identical, otherwise false.
