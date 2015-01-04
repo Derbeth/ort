@@ -3,6 +3,7 @@
 use strict;
 
 use Getopt::Long;
+use Time::HiRes;
 
 my $interactive=1; # run kdiff3
 my $continue=0;
@@ -18,6 +19,7 @@ my $TEST_TEMP_DIR = '/tmp/ort-test';
 `rm -rf $TEST_TEMP_DIR/`;
 `mkdir $TEST_TEMP_DIR`;
 
+my $start_time=Time::HiRes::time;
 my $successful=0;
 my $failed=0;
 for (my $i=$ARGV[0] || 0 ; ; ++$i) {
@@ -41,12 +43,12 @@ for (my $i=$ARGV[0] || 0 ; ; ++$i) {
 		++$successful;
 	}
 }
-print "\n$successful tests succeeded.\n";
+print "\n$successful tests succeeded";
 if ($failed) {
-	print "$failed failed\n";
-	exit(11);
+	print "$failed failed";
 }
-exit(0);
+printf(" in %.2f ms\n", Time::HiRes::time - $start_time);
+exit($failed ? 11 : 0);
 
 # returns true if files are identical, otherwise false.
 # when files are not identical, prints diff to standard output.
