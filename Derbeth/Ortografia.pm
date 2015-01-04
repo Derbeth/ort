@@ -159,9 +159,11 @@ sub popraw_porzadkowe {
 			((set|et|t)?(na|nej|nego|ne|nym|nych|ny|ną))|
 			wsza|sza|wsze|sze|wszych|szych|dmych|mych|ych|dmy|my|dma|ma|dmą|mą|
 			wszy|szy|me|e|ego|go|y|ą)\b/ox) {
-		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
-		if (($ryzykowne || $m3)
-		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		my ($m1,$m2,$m3,$m4,$match,$before,$after) = ($1,$2,$3,$4,$MATCH,$PREMATCH,$POSTMATCH);
+		my $fix = !(!$ryzykowne && !$m3)
+			&& !(!$ryzykowne && $m4 eq 'na' && $m3 =~ /\s/)
+			&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i;
+		if ($fix) {
 			if ($m1 =~ /\d+/) {
 				$match = "$m1."; # 10-te -> 10.
 			} else {

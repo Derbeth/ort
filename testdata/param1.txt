@@ -1,1 +1,1 @@
---ryzykowne 0
+--ryzykowne 0 --typografia 0
