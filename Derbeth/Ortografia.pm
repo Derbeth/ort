@@ -520,7 +520,6 @@ sub popraw_pisownie {
 	$linia =~ s/\b(W|w) śród\b/$1śród/g;
 	$linia =~ s/\b(W|w)(?:ogóle|ogule|ogle)\b/$1 ogóle/g;
 	$linia =~ s/\b(W|w) skutek\b/$1skutek/g;
-	$linia =~ s/\b([wW])iekszy\b/$1iększy/g;
 	$linia =~ s/\bspowrotem\b/z powrotem/g;
 	$linia =~ s/\bSpowrotem\b/Z powrotem/g;
 	$linia =~ s/\bspowodu\b/z powodu/g;
@@ -580,7 +579,6 @@ sub popraw_pisownie {
 	$linia =~ s/\b(F|f)ir(nam|man)en(tem|tu|cie|t)\b/$1irmamen$3/g;
 	$linia =~ s/\bfrancuzk(iego|imi|im|ich|iej|ie|a|i|ą)/francusk$1/g;
 	$linia =~ s/\b(ł|Ł)abądź\b/$1abędź/g;
-	$linia =~ s/\b(G|g)łown(a|e|i|ych|ymi|y|ą)\b/$1łówn$2/g;
 	$linia =~ s/\bgodź\. /godz. /g;
 	$linia =~ s/\bludzią\b/ludziom/g;
 	$linia =~ s/\błać\./łac./g;
@@ -598,25 +596,24 @@ sub popraw_pisownie {
 	$linia =~ s/\btranzakcj(a|i|om|ę|ami|ach|e)/transakcj$1/g;
 	$linia =~ s/\btyś\. /tys. /g;
 	$linia =~ s/\bwach(ać|ało|ał|a)\b/wah$1/g;
-	$linia =~ s/\b(W|w)i[eę]kszo(sc|sć|ść|śc)\b/$1iększość/g;
 	$linia =~ s/\bwłaść\./właśc./g;
 	$linia =~ s/\b(?:wziąść|wziąźć)\b/wziąć/g;
 	$linia =~ s/\b(W|w)sród\b/$1śród/g;
 	$linia =~ s/\bza wyjątkiem\b/z wyjątkiem/g;
 	$linia =~ s/\bzarząda(ła|li|ł)\b/zażąda$1/g;
 	$linia =~ s/\bznaleść\b/znaleźć/g;
-	$linia =~ s/\b(Z|z)wiaz(ek|ku|kiem)\b/$1wiąz$2/g;
 	$linia =~ s/\b([Zz])wycięsc(a|ów)\b/$1wycięzc$2/g;
 	$linia =~ s/\bżadko\b/rzadko/g;
 
 	# brak polskich liter
-	if ($ryzykowne || $linia !~ /\bhttp:\/\//) {
+	if ($ryzykowne) {
 		$linia =~ s/\b(imi|książ|mas|par|plemi|zwierz)e\b/$1ę/g;
 		$linia =~ s/\b(B|b)yc\b/$1yć/g;
 		$linia =~ s/\b(B|b)yl\b/$1ył/g;
 		$linia =~ s/\b(C|c)zest(ych|ymi|o|y|ą|a|e)\b/$1zęst$2/g;
 		$linia =~ s/\b(D|d)osc\b/$1ość/g;
 		$linia =~ s/\b(D|d)uz(o|y|a|e|ych|ą)\b/$1uż$2/g;
+		$linia =~ s/\b(G|g)łown(a|e|i|ych|ymi|y|ą)\b/$1łówn$2/g;
 		$linia =~ s/\b(G|g)dyz\b/$1dyż/g;
 		$linia =~ s/\bjak(a|i|ie)s\b/jak$1ś/g;
 		$linia =~ s/\bktor(zy|ego|ych|ymi|ym|a|ą|y)\b/któr$1/g;
@@ -628,7 +625,9 @@ sub popraw_pisownie {
 		$linia =~ s/\b(P|p)rzyklad\b/$1rzykład/g;
 		$linia =~ s/\b(W|w)iecej\b/$1ięcej/g;
 		$linia =~ s/\b(W|w)iedze\b/$1iedzę/g;
-		$linia =~ s/\b(W|w)ieksz(ych|a|y|e)\b/$1iększ$2/g;
+		$linia =~ s/\b(W|w)ieksz(ego|emu|ym|ych|a|y|e)\b/$1iększ$2/g;
+		$linia =~ s/\b(W|w)i[eę]kszo(sc|sć|ść|śc)\b/$1iększość/g;
+		$linia =~ s/\b(Z|z)wiaz(ek|ku|kiem)\b/$1wiąz$2/g;
 	}
 
 	if ($linia =~ s/\b(v ?- ?ce|vice|wice)[ -]?(\w)/wice\l$2/g) { # "v-ce"
