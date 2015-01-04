@@ -48,7 +48,7 @@ sub safe_replace {
 		my ($before,$capture,$after) = ($`,$&,$');
 		my $true_replace = eval("$1 --> ");
 		print STDERR ">> $true_replace\n";
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($before !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$capture =~ s/$match/$replace/ or die;
 		}
 		$done .= $before.$capture;
@@ -75,7 +75,7 @@ sub popraw_apostrofy1 {
 	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|ą|ę|a|i|e|y|mu|m|u)\b/) {
 		my ($m1,$m2,$match,$before, $after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $after !~ /^-/) && # Jay'a-Z
-		$PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
+		$PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
 		"$PREMATCH$m1" !~ /(Barthes|Georges|Gilles|Jacques|Yves)$/) {
 			$match = "${m1}${m2}";
 		}
@@ -90,7 +90,7 @@ sub popraw_apostrofy2 {
 	my $linia = shift;
 	if ($linia =~ /((ie)]?]?)(?:'|’|`|-|–|—)(go|mu|m)\b(?!-)/) {
 		my ($m1,$m3,$match,$before, $after) = ($1,$3,$MATCH,$PREMATCH,$POSTMATCH);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "${m1}${m3}";
 		}
 		$after = popraw_apostrofy2($after);
@@ -104,7 +104,7 @@ sub popraw_apostrofy3 {
 	my $linia = shift;
 	if ($linia =~ /([y])(?:'|’|`|-|–|—)(ch)\b(?!-)/) {
 		my ($m1,$m2,$match,$before, $after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "${m1}${m2}";
 		}
 		$after = popraw_apostrofy3($after);
@@ -118,7 +118,7 @@ sub popraw_em {
 	if ($linia =~ /(b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z)e(\]\])?('|’|`|-|–|—)m\b/) {
 		my ($m1,$m2,$m3,$match,$before,$after) = ($1,$2,$3,$MATCH,$PREMATCH,$POSTMATCH);
 		$m2 ||= '';
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "${m1}e${m2}${m3}em"; # Steve'm -> Steve'em
 		}
 		$after = popraw_em($after);
@@ -133,7 +133,7 @@ sub popraw_skrotowce {
 		my ($m1,$m2,$m3,$m4,$match,$before, $after) = ($1,$2,$3,$4,$MATCH,$PREMATCH,$POSTMATCH);
 		$m2 ||= '';
 		if (($ryzykowne || $m3)
-		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && $match !~ /kPa|kDa|\bI[a-z]\b/) {
+		&& $PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && $match !~ /kPa|kDa|\bI[a-z]\b/) {
 			$match = "$m1$m2-$m4"; # LOTu -> LOT-u
 		}
 		$after = popraw_skrotowce($after);
@@ -162,7 +162,7 @@ sub popraw_porzadkowe {
 		my ($m1,$m2,$m3,$m4,$match,$before,$after) = ($1,$2,$3,$4,$MATCH,$PREMATCH,$POSTMATCH);
 		my $fix = !(!$ryzykowne && !$m3)
 			&& !(!$ryzykowne && $m4 eq 'na' && $m3 =~ /\s/)
-			&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i;
+			&& $PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i;
 		if ($fix) {
 			if ($m1 =~ /\d+/) {
 				$match = "$m1."; # 10-te -> 10.
@@ -207,7 +207,7 @@ sub popraw_liczebniki1 {
 		"( ?- ?|[–—])?";
 	if ($linia =~ /(\d|\b[XIV]+\b)$separator(nasto|cio|ro|sto|to|mio|o) /o) {
 		my ($m1,$match,$before,$after) = ($1,$MATCH,$PREMATCH,$POSTMATCH);
-		if ($PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$1-"; # 5-cio osobowy -> 5-osobowy, XIX-sto wieczny -> XIX-wieczny
 		}
 		$after = popraw_liczebniki1($after);
@@ -225,7 +225,7 @@ sub popraw_liczebniki2 {
 	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(miu|toma|cioma|ciu|wu|stu|rech|ech|tu|óch|ch|u)\b/) {
 		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $2)
-		&& $PREMATCH !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		&& $PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$1"; # 12-tu -> 12
 		}
 		$after = popraw_liczebniki2($after);
@@ -251,7 +251,7 @@ sub interpunkcja {
 		my ($done, $todo) = ('', $linia); # coś.Niecoś -> coś. Niecoś
 		while ($todo =~ /([a-ząćęłńóśżź\]])\.([A-ZĄĆĘŁŃÓŚŻŹ])/) {
 			my ($before,$match,$after,$m1,$m2) = ($`,$&,$',$1,$2);
-			if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && "$m2$after" !~ /(JPEG|JPG|PNG|GIF)\b/) {
+			if ($before !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i && "$m2$after" !~ /(JPEG|JPG|PNG|GIF)\b/) {
 				$match = "$1. $2";
 			}
 			$done .= $before.$match;
@@ -286,7 +286,7 @@ sub typografia {
 	my ($done, $todo) = ('', $linia);
 	while ($todo =~ /(\d(?:\]\])?) (?:-|–|—|&[mn]dash;) ?((?:\[\[)?\d)/) {
 		my ($before,$match,$after,$m1,$m2) = ($`,$&,$',$1,$2);
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($before !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$m1–$m2";
 		}
 		$done .= $before.$match;
@@ -298,7 +298,7 @@ sub typografia {
 	($done, $todo) = ('', $linia);
 	while ($todo =~ /(^|[ (])((?:\[\[)?\d+(?:\]\])?)-((?:\[\[)?\d+(?:\]\])?)([ )&;,]|$)/) {
 		my ($before,$match,$after,$m1,$m2,$m3,$m4) = ($`,$&,$',$1,$2,$3,$4);
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]+$|^==!i && $before !~ /kod_poczt|^\[\[[^[\]|]+$/ && $before !~ /ISBN *$/) { # TODO FIX
+		if ($before !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]+$|^==!i && $before !~ /kod_poczt|^\[\[[^[\]|]+$/ && $before !~ /ISBN *$/) { # TODO FIX
 			$match = "$1$2–$3$4";
 		}
 		$done .= $before.$match;
@@ -310,7 +310,7 @@ sub typografia {
 	($done, $todo) = ('', $linia);
 	while ($todo =~ / - /) {
 		my ($before,$match,$after) = ($`,$&,$');
-		if ($before !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+		if ($before !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = " – ";
 		}
 		$done .= $before.$match;
@@ -432,7 +432,7 @@ sub popraw_pisownie {
 		my ($done, $todo) = ('', $linia);  # 4.. -> 4. ale nie 4...
 		while ($todo =~ /(\d)\.\.(?!\.)/) {
 			my ($before, $match, $after, $m1) = ($`,$&,$',$1);
-			if ($before  !~ m!http://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
+			if ($before  !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 				$match = "$1.";
 			}
 			$done .= $before.$match;
