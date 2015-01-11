@@ -633,7 +633,7 @@ sub popraw_pisownie {
 	if ($linia =~ s/\b(v ?- ?ce|vice|wice)[ -]?(\w)/wice\l$2/g) { # "v-ce"
 		$linia =~ s/\bwice([vV]ersa|[cC]ity)\b/vice $1/g;
 	}
-	if ($linia =~ /\b(V ?- ?ce|Vice|Wice)[ -]?(\w)/ && $' !~ /^(ity|ersa)\b/) { # "V-ce"
+	if ($ryzykowne && $linia =~ /\b(V ?- ?ce|Vice|Wice)[ -]?(\w)/ && $' !~ /^(ity|ersa)\b/) { # "V-ce"
 		if ($linia =~ s/\b(V ?- ?ce|Vice|Wice)[ -]?(\w)/Wice\l$2/g) {
 			$linia =~ s/W(icente?|icenz)/V$1/g; # cofamy: Vincente, Vicenza
 		}
