@@ -630,6 +630,11 @@ sub popraw_pisownie {
 		$linia =~ s/\b(Z|z)wiaz(ek|ku|kiem)\b/$1wiąz$2/g;
 	}
 
+	# uppercase
+	if ($ryzykowne) {
+		$linia =~ s/(facebook\w)/\u$1/g;
+	}
+
 	if ($linia =~ s/\b(v ?- ?ce|vice|wice)[ -]?(\w)/wice\l$2/g) { # "v-ce"
 		$linia =~ s/\bwice([vV]ersa|[cC]ity)\b/vice $1/g;
 	}

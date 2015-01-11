@@ -166,6 +166,8 @@ Z pośród, z pośród
 wschodnio-północny zachodnio-północnym wschodnio-południowego zachodnio-południowych
 wschodnio południowemu zachodnio-południowej
 
+facebooka facebookiem
+
 == Matematyka ==
 :<MATH>n_i=\sum^{\infty}_0e^{-\beta(nE_0-un)}</MATH>
 :<MATH>n=\sum^{\infty}_{n=1} {({{e^{-\beta(E_0-u)}}})}^n</MATH>
