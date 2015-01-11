@@ -171,6 +171,9 @@ południowo-wschodniemu południowo-zachodniej
 :<MATH>n=\sum^{\infty}_{n=1} {({{e^{-\beta(E_0-u)}}})}^n</MATH>
 Tak <math>0=0</math> jest u Jeffreya.
 
+== Techniczne ==
+http://www.google.pl/search?q=ghostface+horror+icon&foo=bar
+
 == Nie ruszać ==
 Łyżwiński
 

@@ -668,6 +668,8 @@ sub popraw_pisownie {
 	$linia =~ s/Zewnętrzne linki/Linki zewnętrzne/i;
 	$linia =~ s/\[\[(Image|Grafika|Plik|File): */[[Plik:/gi;
 
+	$linia =~ s/&client=firefox-a//g if $ryzykowne;
+
 	if ($kasuj_bry) {
 		$linia =~ s/(<br( ?\/)?>){2}/\n\n/g;
 	}
