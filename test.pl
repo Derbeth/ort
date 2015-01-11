@@ -45,7 +45,7 @@ for (my $i=$ARGV[0] || 0 ; ; ++$i) {
 }
 print "\n$successful tests succeeded";
 if ($failed) {
-	print "$failed failed";
+	print " $failed failed";
 }
 printf(" in %.2f ms\n", Time::HiRes::time - $start_time);
 exit($failed ? 11 : 0);
