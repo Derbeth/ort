@@ -35,7 +35,7 @@ for (my $i=$ARGV[0] || 0 ; ; ++$i) {
 	my $equal = &compare_files($test_output, $test_expected);
 	if (!$equal) {
 		print "Test no. $i failed.\n";
-		my $diff_program = $interactive ? 'kdiff3' : 'diff --unified=2';
+		my $diff_program = $interactive && `which kdiff3` ? 'kdiff3' : 'diff --unified=2';
 		system("$diff_program $test_output $test_expected");
 		exit(11) unless $continue;
 		++$failed;
