@@ -467,9 +467,9 @@ sub popraw_pisownie {
 
 	$linia = popraw_apostrofy($linia);
 	$linia =~ s/(Jak|Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(iem|em|m)\b/$1iem/g; # Mike'm -> Mikiem
-	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
+	$linia =~ s/\[\[([^|\]]*(Luk|Mik|[rR]emak|Spik))e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
 	$linia =~ s/(Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(i)\b/$1i/g;   # remake'i -> remaki
-	$linia =~ s/\[\[\s*(Luk|Mik|[rR]emak|Spik)e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
+	$linia =~ s/\[\[([^|\]]*(Luk|Mik|[rR]emak|Spik))e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
 	$linia =~ s/\b(Metall|Galact)ici\b/$1iki/g; # Metallici -> Metalliki
 	$linia =~ s/\B(ell)i(?:'|’|`|-)?(ego|emu)\b/$1$2/g; # Botticelliemu -> Botticellemu http://so.pwn.pl/zasady.php?id=629632
 	$linia =~ s/\[\[([^\]|]+ell)i\]\](?:'|’|`|-)?(ego|emu)\b/[[$1i|$1$2]]/g; # [[Sandro Botticelli]]ego
@@ -492,7 +492,8 @@ sub popraw_pisownie {
 	$linia =~ s/(Burke|Duke|George|Luke|Mike|Pete|Shayne|Spike|Steve)((?:\]\])?)(a|owi)\b/$1$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(a|owi)\b/$1e$2’$3/g;
 	$linia =~ s/(Boyl|Doyl|Joyc|Lawrenc|Wayn)e?((?:\]\])?)(em|m)\b/$1e$2’em/g;
-	$linia =~ s/(Barr|Dann|Gar|Gretzk|Harr|Perc|Perr|Terr|Timoth)y?((?:\]\])?)(ego|emu)\b/$1y$2’$3/g;
+	$linia =~ s/(Barr|Dann|Gar|Gretzk|Harr|Perc|Perr|Terr|Timoth)y?(ego|emu)\b/$1y’$2/g;
+	$linia =~ s/\[\[([^|\]]*(Barr|Dann|Gar|Gretzk|Harr|Perc|Perr|Terr|Timoth))y\]\](ego|emu)\b/[[$1y|$1y’$3]]/g;
 
 	$linia =~ s/(Andrew|Matthew)('|’|`|-|–|—)?(a|em|ie|owi)/$1/g; # Andrew'a -> Andrew
 	$linia =~ s/(François)('|’|`|-)?(a|em)\b/$1/g; # Françoisa -> François
