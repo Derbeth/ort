@@ -476,7 +476,7 @@ sub popraw_pisownie {
 
 	$linia =~ s/ieego\b/iego$1/g; # Laurieego -> Lauriego
 	$linia =~ s/(Mar|Eri)ciem\b/$1kiem/g; # Marciem, Markem -> Markiem, Ericiem -> Erikiem
-	$linia =~ s/\bMarkem\b/Markiem/g;
+	$linia =~ s/\b(Mark|Greg)em\b/$1iem/g;
 	$linia =~ s/a('|’|`)([ąęy])\b/$2/g; # Laura'y -> Laury
 	$linia =~ s/(oe)((?:\]\])?)('|’|`|-)(go|m)\b/$1$2$4/g; # Joe'go -> Joego
 	$linia =~ s/\Be('|’|`)go\b/ego/g; # Mecke'go -> Meckego
