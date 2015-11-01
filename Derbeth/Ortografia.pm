@@ -381,7 +381,7 @@ sub popraw_pisownie {
 	my $LINK_JEDNOSTKI = '(?:tera|giga|mega|kilo|deka|centy|mili|nano)?(?:bajt|bit|gram|herc|metr)|cal|dolar|frank|funt|galon|hektar|jard|karat|wat|wolt';
 	my $JEDNOSTKI = 'lat(ek|kami|ka|kiem|ki|ku|ków)'
 		.'|lec(iu|iem|ie|ia)'
-		.'|letn(ia|iej|ie|ią|ich|imi|im|i)'
+		.'|letn(ia|iej|iego|ie|ią|ich|imi|im|i)'
 		."|((?:$LINK_JEDNOSTKI)ow|$RYZYK_JEDNOSTKI"
 		."barwn|biegow|bramkow|cylindrow|cyfrow|częściow|dekadow|dniow|drzwiow|dzieln|elementow|etapow|fazow|godzinn|groszow|gwiazdkow|kanałow|kątn|klasow|klawiszow|kołow|komorow|kondygnacyjn|konn|krotn|lufow|masztow|miejscow|miesięczn|miliardow|milionow|minutow|morgow|nabojow|nawow|odcinkow|osiow|osobow|palczast|pasmow|piętrow|pinow|płytow|procentow|procesorow|przęsłow|punktow|ramienn|rdzeniow|roczn|rurow|sekundow|setow|siedzeniow|silnikow|spadow|stopniow|stronn|strunow|strzałow|suwow|ścienn|taktow|tomow|tonow|tygodniow|tysięczn|uncjow|wartościow|wieczn|wymiarow|zaworow|zdaniow|zębow|złotow)"
 			."(ych|ymi|ym|ego|emu|ej|[aeyią])";
