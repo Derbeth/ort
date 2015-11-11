@@ -205,7 +205,7 @@ sub popraw_liczebniki1 {
 	my $separator = $ryzykowne ?
 		"( ?[-–—] ?)?" :
 		"( ?- ?|[–—])?";
-	if ($linia =~ /(\d|\b[XIV]+\b)$separator(nasto|cio|ro|sto|to|mio|o) /o) {
+	if ($linia =~ /(\d|\b[XIV]+\b)$separator(nasto|cio|ro|sto|to|mio|o)[ -]/o) {
 		my ($m1,$match,$before,$after) = ($1,$MATCH,$PREMATCH,$POSTMATCH);
 		if ($PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
 			$match = "$1-"; # 5-cio osobowy -> 5-osobowy, XIX-sto wieczny -> XIX-wieczny
