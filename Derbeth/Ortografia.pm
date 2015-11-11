@@ -561,7 +561,6 @@ sub popraw_pisownie {
 	$linia =~ s/\bwszechczasów\b/wszech czasów/g;
 	$linia =~ s/\b((s|S)tandar)t(owymi|owym|owy|owa|owych|owe|ową|ów|om|u|y)?\b/$1d$3/g;
 	$linia =~ s/\bstandarcie\b/standardzie/g;
-	$linia =~ s/\bmożnaby\b/można by/g;
 	$linia =~ s/\b(P|p)ożąd(ek|ku|kiem)\b/$1orząd$2/g;
 	$linia =~ s/\bna prawdę\b/naprawdę/g;
 	$linia =~ s/\b(W|w) raz z\b/$1raz z/g;
@@ -584,7 +583,7 @@ sub popraw_pisownie {
 	$linia =~ s/\bludzią\b/ludziom/g;
 	$linia =~ s/\błać\./łac./g;
 	$linia =~ s/\bmln\. ([a-ząćęłńóśżź])/mln $1/g; # 100 mln. dolarów -> 100 mln dolarów
-	$linia =~ s/\bmo[zż]naby\b/można by/g;
+	$linia =~ s/\b([mM])o[zż]naby\b/$1ożna by/g; # możnaby...
 	$linia =~ s/\b(O|o)rgina(łu|łów|ły|łem|łami|ł|lni|lnych|lny|lna|lnej|lnego|lnymi|lnym|lną|lne)\b/$1rygina$2/g;
 	$linia =~ s/\b(P|p)iersz(ymi|ym|ych|ej|ego|a|y|e|ą)\b/$1ierwsz$2/g;
 	$linia =~ s/\b(p|P)ojedyńcz(ego|ymi|ym|ych|ej|e|y|ą|a|o)\b/$1ojedyncz$2/g;

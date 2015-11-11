@@ -124,6 +124,7 @@ ale ISBN 123-4567 ISBN123-4567
 == Literówki ==
 to pierszy z pierszym Pierszego pierszą
 ktorą zwiazek gdyz zaden
+Możnaby lub możnaby lub moznaby
 
 == Skrótowce ==
 LOT'u LOTu [[LOT]]'u [[LOT]]owi LOT- owi LOT -em
