@@ -72,7 +72,7 @@ sub popraw_apostrofy {
 
 sub popraw_apostrofy1 {
 	my $linia = shift;
-	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|om|ą|ę|a|i|e|y|mu|m|u)\b/) {
+	if ($linia =~ /((?:b|c|d|f|g|h|j|k|l|m|n|p|r|s|t|v|x|w|z|ey|ay|oy|uy|o|ee|i)]?]?)(?:'|’|`|-|–|—)(ach|iem|em|ów|owych|owym|owy|owego|owej|owe|owskimi|owskich|owskiego|owskie|owskim|owski|owcy|owca|owców|owie|owi|ową|ami|ie|ego|go|emu|om|ą|ę|a|i|e|y|mu|m|u)\b/) {
 		my ($m1,$m2,$match,$before, $after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $after !~ /^-/) && # Jay'a-Z
 		$PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i &&
