@@ -29,7 +29,7 @@ use utf8;
 use English;
 
 our @ISA = qw/Exporter/;
-our $VERSION = 0.6.28;
+our $VERSION = 0.6.29;
 my @EXPORT = ('popraw_pisownie');
 
 our $rzymskie_niebezp = 0; # pozwala na niebezpieczne zamiany
@@ -222,7 +222,7 @@ sub popraw_liczebniki2 {
 		return $linia;
 	}
 
-	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(miu|toma|cioma|ciu|wu|stu|rech|ech|tu|óch|ch|u)\b/) {
+	if ($linia =~ /(\d|\b[XIV]+\b)( ?- ?|[–—])?(miu|toma|cioro|ciorga|ciorgiem|cioma|ciu|oro|oma|wu|stu|rech|ech|rgiem|giem|rga|ga|tu|óch|ch|u)\b/) {
 		my ($m1,$m2,$match,$before,$after) = ($1,$2,$MATCH,$PREMATCH,$POSTMATCH);
 		if (($ryzykowne || $2)
 		&& $PREMATCH !~ m!https?://\S+$|(Grafika|Image|Plik|File):[^\|]*$!i) {
