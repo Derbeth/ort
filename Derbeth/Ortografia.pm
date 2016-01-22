@@ -470,7 +470,8 @@ sub popraw_pisownie {
 	$linia =~ s/\[\[([^|\]]*(Luk|Mik|[rR]emak|Spik))e\s*\]\]('|’|`|-|–|—)(em|m)\b/[[$1e|$1iem]]/g; # [[remake]]'m -> [[remake|remakiem]]
 	$linia =~ s/(Luk|Mik|[rR]emak|Spik)e('|’|`|-|–|—)(i)\b/$1i/g;   # remake'i -> remaki
 	$linia =~ s/\[\[([^|\]]*(Luk|Mik|[rR]emak|Spik))e\s*\]\]('|’|`|-|–|—)(i)\b/[[$1e|$1i]]/g; # [[remake]]'i -> [[remake|remaki]]
-	$linia =~ s/\b(Metall|Galact)ici\b/$1iki/g; # Metallici -> Metalliki
+	$linia =~ s/\b(Apocalypti|Benfi|Galacti|Jessi|Metalli|Rebe|Termali)ci\b/$1ki/g; # Metallici -> Metalliki
+	$linia =~ s/\bAmici\b/Amiki/g if $ryzykowne;
 	$linia =~ s/\B(ell)i(?:'|’|`|-)?(ego|emu)\b/$1$2/g; # Botticelliemu -> Botticellemu http://so.pwn.pl/zasady.php?id=629632
 	$linia =~ s/\[\[([^\]|]+ell)i\]\](?:'|’|`|-)?(ego|emu)\b/[[$1i|$1$2]]/g; # [[Sandro Botticelli]]ego
 
